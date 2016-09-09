@@ -1,45 +1,15 @@
 <div class="cd-main">
   <ul class="cd-gallery">
+    {{#each items as |item|}}
     <li class="cd-item">
-      <a href="item-1.html">
+      <a>
         <div>
-          <h2>Title 1</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
+          <h2>{{item.heading}}</h2>
+          <p>{{item.subheading}}</p>
           <b>View More</b>
         </div>
       </a>
     </li>
-
-    <li class="cd-item">
-      <a href="item-2.html">
-        <div>
-          <h2>Title 2</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-          <b>View More</b>
-        </div>
-      </a>
-    </li>
-
-    <li class="cd-item">
-      <a class="dark-text" href="item-3.html">
-        <div>
-          <h2>Title 3</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-          <b>View More</b>
-        </div>
-      </a>
-    </li>
-
-    <li class="cd-item">
-      <a href="item-4.html">
-        <div>
-          <h2>Title 4</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-          <b>View More</b>
-        </div>
-      </a>
-    </li>
+    {{/each}}
   </ul>
-  <!-- .cd-gallery -->
 </div>
-<!-- .cd-main -->

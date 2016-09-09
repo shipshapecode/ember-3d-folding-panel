@@ -259,6 +259,7 @@ Main content
 	transition: transform $fold-animation $fold-content-animation;
 
 	> a {
+		cursor: pointer;
 		display: table;
 		height: 100%;
 		width: 100%;
