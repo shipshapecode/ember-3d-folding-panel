@@ -1,4 +1,5 @@
 @import './ember-3d-folding-panel/reset';
+@import './ember-3d-folding-panel/mixins';
 
 // colors
 
@@ -9,50 +10,10 @@ $color-4: #65d29b; // Emerald
 $color-5: #1c1726; // Bastille
 $color-6: #ffffff; // White
 
-// fonts
-
-$primary-font: 'Open Sans', sans-serif;
-$secondary-font: 'Vollkorn', serif;
-
 // animation duration
 
 $fold-animation: .5s;
 $fold-content-animation: .2s*(3+1)/2; // replace 3 with number of elements that you want to animate
-
-@mixin clearfix {
-  clear: both;
-  content: "";
-	display: table;
-}
-
-// center vertically and/or horizontally an absolute positioned element
-
-@mixin center($xy:xy) {
-  @if $xy == xy {
-    left: 50%;
-    top: 50%;
-    bottom: auto;
-    right: auto;
-    transform: translateX(-50%) translateY(-50%);
-  }
-  @else if $xy == x {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-  }
-  @else if $xy == y {
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-  }
-}
-
-// antialiasing mode font rendering
-
-@mixin font-smoothing {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 // breakpoints
 
@@ -89,26 +50,9 @@ Primary style
 	box-sizing: border-box;
 }
 
-html {
-	font-size: 62.5%;
-}
-
-body {
-	font: {
-		size: 1.6rem;
-		family: $primary-font; // variables inside partials > _variables.scss
-	}
-	color: $color-1;
-	background-color: $color-5;
-}
-
 a {
 	color: $color-2;
 	text-decoration: none;
-}
-
-h1, h2 {
-	font-family: $secondary-font;
 }
 
 /* --------------------------------
@@ -277,7 +221,7 @@ Main content
 			font-size: 1.6rem;
 		}
 
-		h2, p, .extra-content {
+		h2, p, .extra-content * {
 			transform: translateY(30px);
 			transition: transform 0.3s 0.1s;
 		}
@@ -290,7 +234,7 @@ Main content
 
 		.no-touch & a:hover {
 
-			h2, p, .extra-content {
+			h2, p, .extra-content * {
 				transform: translateY(0);
 				transition: transform 0.3s 0s;
 			}
@@ -503,7 +447,6 @@ folding panel
 	em {
 		display: inline-block;
 		margin: 1em 0;
-		font-family: $secondary-font;
 		font-size: 1.8rem;
 		color: lighten($color-1, 30%);
 

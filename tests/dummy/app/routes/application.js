@@ -5,20 +5,24 @@ export default Route.extend({
   model() {
     return [
       {
-        heading: 'Title 1',
-        subheading: 'Lorem ipsum dolor sit amet, consectetur.'
+        heading: 'Client 1',
+        subheading: 'Lorem ipsum dolor sit amet, consectetur.',
+        imageURL: 'img/logo1.png'
       },
       {
-        heading: 'Title 2',
-        subheading: 'Lorem ipsum dolor sit amet, consectetur.'
+        heading: 'Client 2',
+        subheading: 'Lorem ipsum dolor sit amet, consectetur.',
+        imageURL: 'img/logo2.png'
       },
       {
-        heading: 'Title 3',
-        subheading: 'Lorem ipsum dolor sit amet, consectetur.'
+        heading: 'Client 3',
+        subheading: 'Lorem ipsum dolor sit amet, consectetur.',
+        imageURL: 'img/logo3.png'
       },
       {
-        heading: 'Title 4',
-        subheading: 'Lorem ipsum dolor sit amet, consectetur.'
+        heading: 'Client 4',
+        subheading: 'Lorem ipsum dolor sit amet, consectetur.',
+        imageURL: 'img/logo4.png'
       }
     ];
   }

@@ -1,4 +1,24 @@
 @import 'ember-3d-folding-panel';
+@import './fonts';
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font: {
+		size: 1.6rem;
+		family: $f-primary; // variables inside partials > _variables.scss
+	}
+	color: $color-1;
+	background-color: $color-5;
+}
+
+.client-image {
+	height: auto;
+	padding: 10px;
+	width: 100px;
+}
 
 /* --------------------------------
 Header
@@ -23,4 +43,8 @@ header {
 			font-size: 3rem;
 		}
 	}
+}
+
+.pacifico {
+	font-family: $f-pacifico;
 }
