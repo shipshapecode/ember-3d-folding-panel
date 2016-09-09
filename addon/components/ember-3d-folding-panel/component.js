@@ -43,9 +43,9 @@ export default Component.extend({
     /* according to the mq, immediately remove the .overflow-hidden or wait for the end of the animation */
     ? $('body').removeClass('overflow-hidden')
 
-    : mainContent.find('.cd-item').eq(0).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+    : mainContent.find('.item-square').eq(0).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
       $('body').removeClass('overflow-hidden');
-      mainContent.find('.cd-item').eq(0).off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
+      mainContent.find('.item-square').eq(0).off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
     });
     }
 

@@ -1,15 +1,5 @@
 <div class="cd-main">
   <ul class="cd-gallery">
-    {{#each items as |item|}}
-    <li class="cd-item">
-      <a>
-        <div>
-          <h2>{{item.heading}}</h2>
-          <p>{{item.subheading}}</p>
-          <b>View More</b>
-        </div>
-      </a>
-    </li>
-    {{/each}}
+    {{yield}}
   </ul>
 </div>

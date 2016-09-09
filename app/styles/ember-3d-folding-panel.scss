@@ -190,7 +190,7 @@ Main content
 	}
 }
 
-.cd-item {
+.item-square {
 	width: 100%;
 	height: 300px;
 	text-align: center;
@@ -277,7 +277,7 @@ Main content
 			font-size: 1.6rem;
 		}
 
-		h2, p {
+		h2, p, .extra-content {
 			transform: translateY(30px);
 			transition: transform 0.3s 0.1s;
 		}
@@ -290,7 +290,7 @@ Main content
 
 		.no-touch & a:hover {
 
-			h2, p {
+			h2, p, .extra-content {
 				transform: translateY(0);
 				transition: transform 0.3s 0s;
 			}
