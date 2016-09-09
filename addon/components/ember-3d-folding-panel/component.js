@@ -70,7 +70,7 @@ export default Component.extend({
       });
 
       /* close folding content */
-      foldingPanel.on('click', '.cd-close', (event) => {
+      foldingPanel.on('click', '.close-button', (event) => {
         event.preventDefault();
         this.toggleContent('', false);
       });

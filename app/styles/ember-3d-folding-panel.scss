@@ -320,7 +320,7 @@ folding panel
 		}
 	}
 
-	.cd-close {
+	.close-button {
 		/* 'X' close icon */
 		position: absolute;
 		z-index: 1;
@@ -337,6 +337,10 @@ folding panel
 
 		opacity: 0;
 		transition: opacity .2s 0s;
+
+    &:hover {
+      cursor: pointer;
+    }
 
 		&::after,
 		&::before {
@@ -375,7 +379,7 @@ folding panel
 			background-color: lighten($color-3, 12%);
 		}
 
-		.cd-close {
+		.close-button {
 			opacity: 1;
 			transition: opacity .2s $fold-animation;
 		}
