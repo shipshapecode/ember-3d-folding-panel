@@ -67,7 +67,7 @@ Patterns - reusable parts of our design
 Main content
 -------------------------------- */
 
-.cd-main {
+.main-container {
 	overflow-x: hidden;
 
 	&::before {
@@ -81,7 +81,7 @@ Main content
 	}
 
 	&.fold-is-open > * {
-		/* on mobile - translate .cd-main content to the right when the .folding-panel is open */
+		/* on mobile - translate .main-container content to the right when the .folding-panel is open */
 		transform: translateX(100%);
 		transition: transform $fold-animation 0s;
 	}

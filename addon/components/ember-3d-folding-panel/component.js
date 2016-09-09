@@ -4,7 +4,10 @@ const { $, Component, inject, run } = Ember;
 
 export default Component.extend({
   layout,
+  classNameBindings: [':main-container', 'panel.foldIsOpen:fold-is-open'],
+
   panel: inject.service(),
+
   didInsertElement() {
     run.scheduleOnce('afterRender', this, function() {
       let gallery = $('.cd-gallery');
