@@ -1,1 +1,26 @@
 @import 'ember-3d-folding-panel';
+
+/* --------------------------------
+Header
+-------------------------------- */
+
+header {
+	height: 170px;
+	line-height: 170px;
+	text-align: center;
+	background: $color-6;
+
+	h1 {
+		font-size: 2.2rem;
+		color: $color-1;
+	}
+
+	@include MQ(M) {
+		height: 200px;
+		line-height: 200px;
+
+		h1 {
+			font-size: 3rem;
+		}
+	}
+}

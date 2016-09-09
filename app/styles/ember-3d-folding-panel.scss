@@ -79,6 +79,7 @@ $fold-content-animation: .2s*(3+1)/2; // replace 3 with number of elements that 
 @mixin clearfix {
   clear: both;
   content: "";
+	display: table;
 }
 
 // center vertically and/or horizontally an absolute positioned element
@@ -176,31 +177,6 @@ Patterns - reusable parts of our design
 }
 
 /* --------------------------------
-Header
--------------------------------- */
-
-header {
-	height: 170px;
-	line-height: 170px;
-	text-align: center;
-	background: $color-6;
-
-	h1 {
-		font-size: 2.2rem;
-		color: $color-1;
-	}
-
-	@include MQ(M) {
-		height: 200px;
-		line-height: 200px;
-
-		h1 {
-			font-size: 3rem;
-		}
-	}
-}
-
-/* --------------------------------
 Main content
 -------------------------------- */
 
@@ -246,6 +222,7 @@ Main content
 
 .cd-gallery {
 	@include clearfix;
+	width: 100%;
 
 	&::before {
 		/* this is the dark layer covering the .cd-gallery when the .cd-folding-panel is open */
