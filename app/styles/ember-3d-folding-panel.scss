@@ -1,0 +1,659 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, main {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+// colors
+
+$color-1: #363558; // Martinique
+$color-2: #544173; // Mulled Wine
+$color-3: #dadcdc; // Iron
+$color-4: #65d29b; // Emerald
+$color-5: #1c1726; // Bastille
+$color-6: #ffffff; // White
+
+// fonts
+
+$primary-font: 'Open Sans', sans-serif;
+$secondary-font: 'Vollkorn', serif;
+
+// animation duration
+
+$fold-animation: .5s;
+$fold-content-animation: .2s*(3+1)/2; // replace 3 with number of elements that you want to animate
+
+@mixin clearfix {
+  clear: both;
+  content: "";
+}
+
+// center vertically and/or horizontally an absolute positioned element
+
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+}
+
+// antialiasing mode font rendering
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// breakpoints
+
+$S:     480px;
+$M:     600px;
+$L:     1100px;
+
+// media queries
+
+@mixin MQ($canvas) {
+  @if $canvas == S {
+   @media only screen and (min-width: $S) { @content; }
+  }
+  @else if $canvas == M {
+   @media only screen and (min-width: $M) { @content; }
+  }
+  @else if $canvas == L {
+   @media only screen and (min-width: $L) { @content; }
+  }
+}
+
+// super light grid - it works with the .cd-container class inside style.scss
+
+@mixin column($percentage, $float-direction:left) {
+  width: 100% * $percentage;
+  float: $float-direction;
+}
+
+/* --------------------------------
+Primary style
+-------------------------------- */
+
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font: {
+		size: 1.6rem;
+		family: $primary-font; // variables inside partials > _variables.scss
+	}
+	color: $color-1;
+	background-color: $color-5;
+}
+
+a {
+	color: $color-2;
+	text-decoration: none;
+}
+
+h1, h2 {
+	font-family: $secondary-font;
+}
+
+/* --------------------------------
+Patterns - reusable parts of our design
+-------------------------------- */
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+/* --------------------------------
+Header
+-------------------------------- */
+
+header {
+	height: 170px;
+	line-height: 170px;
+	text-align: center;
+	background: $color-6;
+
+	h1 {
+		font-size: 2.2rem;
+		color: $color-1;
+	}
+
+	@include MQ(M) {
+		height: 200px;
+		line-height: 200px;
+
+		h1 {
+			font-size: 3rem;
+		}
+	}
+}
+
+/* --------------------------------
+Main content
+-------------------------------- */
+
+.cd-main {
+	overflow-x: hidden;
+
+	&::before {
+		/* never visible - this is used in jQuery to check the current MQ */
+		display: none;
+		content: 'mobile';
+	}
+
+	> * {
+		transition: transform $fold-animation $fold-content-animation;
+	}
+
+	&.fold-is-open > * {
+		/* on mobile - translate .cd-main content to the right when the .cd-folding-panel is open */
+		transform: translateX(100%);
+		transition: transform $fold-animation 0s;
+	}
+
+	@include MQ(M) {
+
+		&.fold-is-open > * {
+			transform: translateX(600px);
+		}
+	}
+
+	@include MQ(L) {
+
+		&::before {
+			/* never visible - this is used in jQuery to check the current MQ */
+			content: 'desktop';
+		}
+
+		&.fold-is-open > * {
+			/* reset style - on bigger devices we translate the gallery items */
+			transform: translateX(0);
+		}
+	}
+}
+
+.cd-gallery {
+	@include clearfix;
+
+	&::before {
+		/* this is the dark layer covering the .cd-gallery when the .cd-folding-panel is open */
+		display: block;
+		content: '';
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background-color: rgba($color-5, .6);
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity  $fold-animation $fold-content-animation, visibility 0s $fold-animation+$fold-content-animation;
+	}
+
+	.fold-is-open &::before {
+		visibility: visible;
+		opacity: 1;
+		transition: opacity  $fold-animation 0s, visibility 0s 0s;
+	}
+}
+
+.cd-item {
+	width: 100%;
+	height: 300px;
+	text-align: center;
+
+	/* Force Hardware Acceleration */
+	transform: translateZ(0);
+	backface-visibility: hidden;
+
+	transition: transform $fold-animation $fold-content-animation;
+
+	> a {
+		display: table;
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+		color: $color-6;
+		@include font-smoothing;
+
+		&.dark-text {
+			color: $color-1;
+
+			b {
+				border-color: $color-1;
+			}
+		}
+	}
+
+	div {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	&:nth-of-type(1) {
+		background-color: $color-1;
+	}
+
+	&:nth-of-type(2) {
+		background-color: $color-2;
+	}
+
+	&:nth-of-type(3) {
+		background-color: $color-3;
+	}
+
+	&:nth-of-type(4) {
+		background-color: $color-4;
+	}
+
+	h2 {
+		font-size: 2.2rem;
+	}
+
+	p {
+		line-height: 1.2;
+		font-size: 1.4rem;
+		opacity: 0.6;
+		padding: 1em 0;
+	}
+
+	b {
+		display: inline-block;
+		font: {
+			size: 1.2rem;
+			weight: bold;
+		}
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		padding: 1em 1.3em;
+		border-radius: 50em;
+		border: 1px solid $color-6;
+	}
+
+	@include MQ(L) {
+		@include column(.5);
+		height: 520px;
+		transition: transform $fold-animation $fold-content-animation;
+
+		h2 {
+			font-size: 3rem;
+		}
+
+		p {
+			font-size: 1.6rem;
+		}
+
+		h2, p {
+			transform: translateY(30px);
+			transition: transform 0.3s 0.1s;
+		}
+
+		b {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.3s 0s, transform 0.3s 0s;
+		}
+
+		.no-touch & a:hover {
+
+			h2, p {
+				transform: translateY(0);
+				transition: transform 0.3s 0s;
+			}
+
+			b {
+				opacity: 1;
+				transform: translateY(0);
+				transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+			}
+		}
+
+		.fold-is-open & {
+			transition: transform $fold-animation 0s;
+			transform: translateX(-400px);
+
+			&:nth-of-type(2n) {
+				transform: translateX(400px);
+			}
+		}
+	}
+}
+
+/* --------------------------------
+folding panel
+-------------------------------- */
+
+.cd-folding-panel {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	visibility: hidden;
+	overflow: hidden;
+
+	transition: visibility 0s $fold-animation+$fold-content-animation;
+
+	.fold-left,
+	.fold-right {
+		/* the :after elements of .fold-left and .fold-right are the 2 fold sides */
+		width: 100%;
+		height: 100vh;
+		overflow: hidden;
+		position: relative;
+
+		/* enable a 3D-space for children elements */
+		perspective: 2000px;
+
+		&::after {
+			/* 2 fold sides */
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+
+			/* Force Hardware Acceleration */
+			transform: translateZ(0);
+			backface-visibility: hidden;
+
+			transition: transform $fold-animation $fold-content-animation, background-color $fold-animation $fold-content-animation;
+		}
+	}
+
+	.fold-right {
+		perspective-origin: 0% 50%;
+
+		&::after {
+			transform-origin: right center;
+			transform: translateX(-100%) rotateY(-90deg);
+			background-color: darken($color-3, 10%);
+		}
+	}
+
+	.fold-left {
+		/* on mobile only the right fold side is visible */
+		display: none;
+
+		&::after {
+			background-color: lighten($color-3, 12%);
+		}
+	}
+
+	.cd-close {
+		/* 'X' close icon */
+		position: absolute;
+		z-index: 1;
+		display: inline-block;
+		top: 10px;
+		right: 10px;
+		height: 44px;
+		width: 44px;
+
+		/* image replacement */
+		overflow: hidden;
+		text-indent: 100%;
+		white-space: nowrap;
+
+		opacity: 0;
+		transition: opacity .2s 0s;
+
+		&::after,
+		&::before {
+			/* lines of 'X' icon */
+			content: '';
+			position: absolute;
+			height: 3px;
+			width: 32px;
+			left: 50%;
+	    	top: 50%;
+			background-color: $color-2;
+			backface-visibility: hidden;
+			transition: opacity .2s;
+		}
+
+		&::after {
+			transform: translateX(-50%) translateY(-50%) rotate(45deg);
+		}
+
+		&::before {
+			transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+		}
+	}
+
+	&.is-open {
+		visibility: visible;
+		transition: visibility 0s 0s;
+
+		.fold-right::after,
+		.fold-left::after {
+			transform: translateX(0);
+			transition: transform $fold-animation 0s, background-color $fold-animation 0s;
+		}
+
+		.fold-right::after {
+			background-color: lighten($color-3, 12%);
+		}
+
+		.cd-close {
+			opacity: 1;
+			transition: opacity .2s $fold-animation;
+		}
+	}
+
+	@include MQ(M) {
+		width: 600px;
+	}
+
+	@include MQ(L) {
+		@include center(x);
+		width: 800px;
+
+		.fold-left,
+		.fold-right {
+			@include column(.5);
+			height: 100%;
+		}
+
+		.fold-right {
+			/* change perspective-origin so that the 2 fold sides have the same vanishing point */
+			perspective-origin: 0% 50%;
+
+			&::after {
+				transform-origin: right center;
+				transform: translateX(-100%) rotateY(-90deg);
+			}
+		}
+
+		.fold-left {
+			display: block;
+			/* change perspective-origin so that the 2 fold sides have the same vanishing point */
+			perspective-origin: 100% 50%;
+
+			&::after {
+				transform-origin: left center;
+				transform: translateX(100%) rotateY(90deg);
+			}
+		}
+	}
+}
+
+.cd-fold-content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	padding: 4em 2em;
+
+	visibility: hidden;
+	transition: visibility 0s $fold-content-animation;
+
+	> * {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	h2 {
+		font-size: 2.4rem;
+
+		transition: transform $fold-content-animation/2 $fold-content-animation/2, opacity $fold-content-animation/2 $fold-content-animation/2;
+	}
+
+	p, em {
+		line-height: 1.6;
+	}
+
+	em {
+		display: inline-block;
+		margin: 1em 0;
+		font-family: $secondary-font;
+		font-size: 1.8rem;
+		color: lighten($color-1, 30%);
+
+		transition: transform $fold-content-animation/2 $fold-content-animation/4, opacity $fold-content-animation/2 $fold-content-animation/4;
+	}
+
+	p {
+		margin-bottom: 1em;
+		font-size: 1.4rem;
+		transition: transform $fold-content-animation/2 0s, opacity $fold-content-animation/2 0s;
+	}
+
+	.is-open & {
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		visibility: visible;
+		transition: visibility 0s $fold-animation;
+
+		> * {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		h2 {
+			transition: transform $fold-content-animation/2 $fold-animation, opacity $fold-content-animation/2 $fold-animation;
+		}
+
+		em {
+			transition: transform $fold-content-animation/2 $fold-animation+$fold-content-animation/4, opacity $fold-content-animation/2 $fold-animation+$fold-content-animation/4;
+		}
+
+		p {
+			transition: transform $fold-content-animation/2 $fold-animation+$fold-content-animation/2, opacity $fold-content-animation/2 $fold-animation+$fold-content-animation/2;
+		}
+	}
+
+	@include MQ(M) {
+		h2 {
+			font-size: 3.2rem;
+		}
+	}
+
+	@include MQ(L) {
+		padding: 4em;
+
+		> * {
+			transform: translateY(40px);
+		}
+
+		em {
+			font-size: 2.2rem;
+		}
+
+		p {
+			font-size: 1.6rem;
+		}
+	}
+}
+
+/* --------------------------------
+Javascript disabled
+-------------------------------- */
+
+.no-js .cd-fold-content.single-page {
+	position: static;
+	visibility: visible;
+	height: auto;
+	background-color: $color-3;
+
+	> * {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
