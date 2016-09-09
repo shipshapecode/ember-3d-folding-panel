@@ -58,7 +58,7 @@ export default Component.extend({
     run.scheduleOnce('afterRender', this, function() {
       let gallery = $('.cd-gallery');
       this.set('gallery', gallery);
-      let foldingPanel = $('.cd-folding-panel');
+      let foldingPanel = $('.folding-panel');
       this.set('foldingPanel', foldingPanel);
       let mainContent = $('.cd-main');
       this.set('mainContent', mainContent);
@@ -75,7 +75,7 @@ export default Component.extend({
         this.toggleContent('', false);
       });
       gallery.on('click', (event) => {
-        /* detect click on .cd-gallery::before when the .cd-folding-panel is open */
+        /* detect click on .cd-gallery::before when the .folding-panel is open */
         if ($(event.target).is('.cd-gallery') && $('.fold-is-open').length > 0) {
           this.toggleContent('', false);
         }

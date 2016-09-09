@@ -194,7 +194,7 @@ Main content
 	}
 
 	&.fold-is-open > * {
-		/* on mobile - translate .cd-main content to the right when the .cd-folding-panel is open */
+		/* on mobile - translate .cd-main content to the right when the .folding-panel is open */
 		transform: translateX(100%);
 		transition: transform $fold-animation 0s;
 	}
@@ -225,7 +225,7 @@ Main content
 	width: 100%;
 
 	&::before {
-		/* this is the dark layer covering the .cd-gallery when the .cd-folding-panel is open */
+		/* this is the dark layer covering the .cd-gallery when the .folding-panel is open */
 		display: block;
 		content: '';
 		position: absolute;
@@ -373,7 +373,7 @@ Main content
 folding panel
 -------------------------------- */
 
-.cd-folding-panel {
+.folding-panel {
 	position: fixed;
 	z-index: 1;
 	top: 0;

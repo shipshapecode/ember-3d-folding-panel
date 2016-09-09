@@ -1,0 +1,1 @@
+export { default } from 'ember-3d-folding-panel/components/folding-panel/component';
