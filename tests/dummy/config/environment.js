@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* eslint-disable */
 
 module.exports = function(environment) {
   var ENV = {
@@ -40,7 +40,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.locationType = 'hash';
-    ENV.baseUrl = '/ember-3d-folding-panel/';
+    ENV.rootURL = '/ember-3d-folding-panel/';
 
   }
 
