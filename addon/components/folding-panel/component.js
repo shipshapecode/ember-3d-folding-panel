@@ -1,7 +1,10 @@
 import Ember from 'ember';
 import layout from './template';
-const { Component } = Ember;
+import { alias } from 'ember-computed-decorators';
+const { Component, inject } = Ember;
 
 export default Component.extend({
-  layout
+  layout,
+  panel: inject.service(),
+  @alias('panel.selected') selected: null
 });

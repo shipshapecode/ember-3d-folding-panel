@@ -9,7 +9,7 @@ export default Component.extend({
   panel: inject.service(),
   click() {
     event.preventDefault();
-    // TODO pass clicked item in to grab data for page
+    this.set('panel.selected', this.get('item'));
     this.openItemInfo();
   },
   openItemInfo() {
