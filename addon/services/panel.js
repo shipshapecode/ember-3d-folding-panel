@@ -28,6 +28,6 @@ export default Service.extend({
   },
   viewportSize() {
     /* retrieve the content value of .main-container::before to check the actua mq */
-    return window.getComputedStyle(document.querySelector('.main-container'), '::before').getPropertyValue('content').replace(/"/g, '').replace(/'/g, '');
+    return window && window.getComputedStyle(document.querySelector('.main-container'), '::before').getPropertyValue('content').replace(/"/g, '').replace(/'/g, '');
   }
 });
