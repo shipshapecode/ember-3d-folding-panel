@@ -1,7 +1,7 @@
 {
   "name": "ember-3d-folding-panel",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "An Ember addon for 3d folding panels",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": "https://github.com/shipshapecode/ember-3d-folding-panel",
   "engines": {
     "node": ">= 0.10.0"
   },
