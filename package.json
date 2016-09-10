@@ -50,6 +50,7 @@
     "ember-cli-sass": "5.5.1"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "demoURL": "https://shipshapecode.github.io/ember-3d-folding-panel/"
   }
 }
