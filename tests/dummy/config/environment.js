@@ -39,6 +39,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.locationType = 'hash';
+    ENV.baseUrl = '/ember-3d-folding-panel/';
 
   }
 
