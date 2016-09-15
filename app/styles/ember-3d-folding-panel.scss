@@ -35,7 +35,7 @@ $L:     1100px;
   }
 }
 
-// super light grid - it works with the .cd-container class inside style.scss
+// super light grid - it works with the .main-container class inside style.scss
 
 @mixin column($percentage, $float-direction:left) {
   width: 100% * $percentage;
@@ -107,12 +107,12 @@ Main content
 	}
 }
 
-.cd-gallery {
+.gallery {
 	@include clearfix;
 	width: 100%;
 
 	&::before {
-		/* this is the dark layer covering the .cd-gallery when the .folding-panel is open */
+		/* this is the dark layer covering the .gallery when the .folding-panel is open */
 		display: block;
 		content: '';
 		position: absolute;
@@ -422,7 +422,7 @@ folding panel
 	}
 }
 
-.cd-fold-content {
+.fold-content {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -514,7 +514,7 @@ folding panel
 Javascript disabled
 -------------------------------- */
 
-.no-js .cd-fold-content.single-page {
+.no-js .fold-content.single-page {
 	position: static;
 	visibility: visible;
 	height: auto;

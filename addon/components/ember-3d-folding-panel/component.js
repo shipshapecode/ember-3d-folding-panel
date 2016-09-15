@@ -10,11 +10,11 @@ export default Component.extend({
 
   didInsertElement() {
     run.scheduleOnce('afterRender', this, function() {
-      let gallery = $('.cd-gallery');
+      let gallery = $('.gallery');
 
       gallery.on('click', (event) => {
-        /* detect click on .cd-gallery::before when the .folding-panel is open */
-        if ($(event.target).is('.cd-gallery') && $('.fold-is-open').length > 0) {
+        /* detect click on .gallery::before when the .folding-panel is open */
+        if ($(event.target).is('.gallery') && $('.fold-is-open').length > 0) {
           this.get('panel').toggleContent('', false);
         }
       });
