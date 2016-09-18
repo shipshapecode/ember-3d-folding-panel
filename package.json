@@ -51,5 +51,19 @@
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "demoURL": "https://shipshapecode.github.io/ember-3d-folding-panel/"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "broccoli-asset-rev",
+      "ember-cli-app-version",
+      "ember-cli-babel",
+      "ember-cli-htmlbars",
+      "ember-cli-htmlbars-inline-precompile",
+      "ember-cli-qunit",
+      "ember-cli-sri",
+      "ember-cli-test-loader",
+      "ember-resolver",
+      "loader.js"
+    ]
   }
 }
