@@ -10,3 +10,18 @@
 [![Test Coverage](https://codeclimate.com/github/shipshapecode/ember-3d-folding-panel/badges/coverage.svg)](https://codeclimate.com/github/shipshapecode/ember-3d-folding-panel/coverage)
 
 Ember-3d-folding-panel is based on [3D Folding Panel](https://codyhouse.co/gem/3d-folding-panel/) by CodyHouse. It aims to make it easily configurable for use with your Ember apps.
+
+## Installation
+`ember install ember-3d-folding-panel`
+
+## Usage
+```hbs
+{{folding-panel}}
+{{#ember-3d-folding-panel}}
+  {{#each model as |item|}}
+    {{#item-square item=item}}
+      <img class="client-image" src="{{item.imageURL}}">
+    {{/item-square}}
+  {{/each}}
+{{/ember-3d-folding-panel}}
+```
