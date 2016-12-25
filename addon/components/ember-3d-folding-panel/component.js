@@ -3,14 +3,13 @@ import layout from './template';
 const { $, Component, inject, run } = Ember;
 
 export default Component.extend({
+  panel: inject.service(),
   layout,
   classNameBindings: [':main-container', 'panel.foldIsOpen:fold-is-open'],
 
-  panel: inject.service(),
-
   didInsertElement() {
     run.scheduleOnce('afterRender', this, function() {
-      let gallery = $('.gallery');
+      const gallery = $('.gallery');
 
       gallery.on('click', (event) => {
         /* detect click on .gallery::before when the .folding-panel is open */

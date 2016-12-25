@@ -3,18 +3,18 @@ import layout from './template';
 const { $, Component, inject } = Ember;
 
 export default Component.extend({
+  panel: inject.service(),
   layout,
   tagName: 'li',
   classNameBindings: [':item-square'],
-  panel: inject.service(),
   click() {
     event.preventDefault();
     this.set('panel.selected', this.get('item'));
     this.openItemInfo();
   },
   openItemInfo() {
-    let mq = this.get('panel').viewportSize();
-    let gallery = $('.gallery');
+    const mq = this.get('panel').viewportSize();
+    const gallery = $('.gallery');
     if (gallery.offset().top > $(window).scrollTop() && mq != 'mobile') {
     /* if content is visible above the .gallery - scroll before opening the folding panel */
       $('body,html').animate({

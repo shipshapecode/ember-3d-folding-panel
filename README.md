@@ -25,3 +25,6 @@ Ember-3d-folding-panel is based on [3D Folding Panel](https://codyhouse.co/gem/3
   {{/each}}
 {{/ember-3d-folding-panel}}
 ```
+
+`items` are defined as an array of objects, these should contain `heading` and `subheading`.
+ You can also display extra info inside of the `item-square`.
