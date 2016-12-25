@@ -7,7 +7,7 @@ export default Component.extend({
   layout,
   tagName: 'li',
   classNameBindings: [':item-square'],
-  click() {
+  click(event) {
     event.preventDefault();
     this.set('panel.selected', this.get('item'));
     this.openItemInfo();

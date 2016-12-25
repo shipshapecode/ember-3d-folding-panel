@@ -2,6 +2,7 @@ import Ember from 'ember';
 const { $, Service } = Ember;
 
 export default Service.extend({
+  foldIsOpen: false,
   toggleContent(bool) {
     const mainContent = $('.main-container');
     if (bool) {

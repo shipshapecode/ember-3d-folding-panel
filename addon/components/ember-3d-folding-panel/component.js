@@ -7,16 +7,10 @@ export default Component.extend({
   layout,
   classNameBindings: [':main-container', 'panel.foldIsOpen:fold-is-open'],
 
-  didInsertElement() {
-    run.scheduleOnce('afterRender', this, function() {
-      const gallery = $('.gallery');
-
-      gallery.on('click', (event) => {
-        /* detect click on .gallery::before when the .folding-panel is open */
-        if ($(event.target).is('.gallery') && $('.fold-is-open').length > 0) {
-          this.get('panel').toggleContent('', false);
-        }
-      });
-    });
+  click(event){
+    /* detect click on .gallery::before when the .folding-panel is open */
+    if ($(event.target).is('.gallery') && this.get('panel.foldIsOpen')) {
+      this.get('panel').toggleContent('', false);
+    }
   }
 });
