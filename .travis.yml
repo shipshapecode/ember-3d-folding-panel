@@ -42,3 +42,11 @@ script:
   # Usually, it's ok to finish the test scenario without reverting
   #  to the addon's original dependency state, skipping "cleanup".
   - COVERAGE=true ember try:one $EMBER_TRY_SCENARIO test --skip-cleanup
+
+after_script:
+  - codeclimate-test-reporter < coverage/lcov.info
+
+addons:
+  code_climate:
+    repo_token:
+      secure: "pk4HymUw/hVLU65fB/9C2gA4S6Us5O58GTgPyJV2JpGaI4SQcHmKyB8RtE4ncZGQSSXGBJM21c4WooT72M+jg143n3uvRGIrPcy/xmjTuv3QZ5Mi7NuU9rO23b/AUxdbViHYE5gmMFXNbHr19g9Pga23kQfyzzUvAzNobedUgF2M8JISxmTIdf0A0tDV54GFPXYbt8yt0Yccn3q6ssMEtQrVTpA8HMYnuTT0NAWBO8uv9T/u/lKtceK+W/mZj4YciY3mI15o0aSMKAZ1MDxJ9Icy1iISZ2UkSXlz2hKNrmcIpciXHzOr8tFeq2JuHo0yfS1qdTiJE/jvFXEDQnAHYGruHZZiNRxd+90TomGFoWENDDSAhu2TotN/TAdKsQyZwl8K9LfcGAMJ6JejKwxX+OhliHNraRdvS0zBzxEDPQtVK4nyt7YxjVN5WgEAj3tRtQRzMBXvr9bCRm8wc6qr+LYbaBN30cPvgQN5vBH5FbamW+d1QWG0mbGji5LsTaxolfwQLtWa29iE7NBO2HnUPBAFtxB7vLrO59geWZ/S6PURf9EuI7y2OBuG8QXuNlY2cPNUk1ZlRg+pKX2tscS+nuNSCd6UWIEEhNNXX3BCEh0JVO/lZfEmy6Kp4U6cfcdmwDYQquWyulCB3hQImF1IXfwPVd0vs2eCNmiDiLp45ps="
