@@ -232,7 +232,7 @@ Main content
 			transition: opacity 0.3s 0s, transform 0.3s 0s;
 		}
 
-		.no-touch & a:hover {
+		& a:hover {
 
 			h2, p, .extra-content * {
 				transform: translateY(0);
@@ -507,21 +507,5 @@ folding panel
 		p {
 			font-size: 1.6rem;
 		}
-	}
-}
-
-/* --------------------------------
-Javascript disabled
--------------------------------- */
-
-.no-js .fold-content.single-page {
-	position: static;
-	visibility: visible;
-	height: auto;
-	background-color: $color-3;
-
-	> * {
-		opacity: 1;
-		transform: translateY(0);
 	}
 }
