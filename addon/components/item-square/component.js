@@ -22,7 +22,7 @@ export default Component.extend({
       }, 100, () => {
         this.get('panel').toggleContent(true);
       });
-    } else if (gallery.offset().top + gallery.height() < $(window).scrollTop() + $(window).height()  && mq != 'mobile') {
+    } else if (gallery.offset().top + gallery.height() < $(window).scrollTop() + $(window).height() && mq != 'mobile') {
     /* if content is visible below the .gallery - scroll before opening the folding panel */
       $('body,html').animate({
         'scrollTop': gallery.offset().top + gallery.height() - $(window).height()
