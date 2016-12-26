@@ -1,24 +1,34 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import Ember from  'ember';
+const { Service } = Ember;
 
-moduleForComponent('folding-panel', 'Integration | Component | folding panel', {
-  integration: true
+const panelStub = Service.extend({
+  foldIsOpen: true,
+  selected: {
+    heading: 'Client 1',
+    subheading: 'Lorem ipsum dolor sit amet, consectetur.',
+    panelHeading: 'Panel Heading',
+    panelSubheading: 'Panel Subheading',
+    imageURL: 'img/logo1.png',
+    panelInfo: '<p>Foo</p>'
+  }
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+moduleForComponent('folding-panel', 'Integration | Component | folding panel', {
+  integration: true,
+
+  beforeEach() {
+    this.register('service:panel', panelStub);
+    this.inject.service('panel', { as: 'panel' });
+  }
+});
+
+test('folding-panel renders selected info', function(assert) {
 
   this.render(hbs`{{folding-panel}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#folding-panel}}
-      template block text
-    {{/folding-panel}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.fold-content h2').text().trim(), 'Panel Heading');
+  assert.equal(this.$('.fold-content em').text().trim(), 'Panel Subheading');
+  assert.ok(this.$('.fold-content').text().trim().endsWith('<p>Foo</p>'));
 });
