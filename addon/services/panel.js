@@ -1,7 +1,8 @@
 import Ember from 'ember';
-const { $, Service } = Ember;
+const { $, inject: { service }, Service } = Ember;
 
 export default Service.extend({
+  layoutService: service('device/layout'),
   foldIsOpen: false,
   toggleContent(bool) {
     const mainContent = $('.main-container');
@@ -11,21 +12,19 @@ export default Service.extend({
       this.set('foldIsOpen', true);
     } else {
       /* close the folding panel */
-      const mq = this.viewportSize();
       this.set('foldIsOpen', false);
 
-      (mq == 'mobile' || $('.no-csstransitions').length > 0)
-        /* according to the mq, immediately remove the .overflow-hidden or wait for the end of the animation */
-        ? $('body').removeClass('overflow-hidden')
-
-        : mainContent.find('.item-square').eq(0).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
-          $('body').removeClass('overflow-hidden');
-          mainContent.find('.item-square').eq(0).off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
-        });
+      // if on mobile, immediately remove the .overflow-hidden
+      if (this.get('layoutService.isMobile')) {
+        $('body').removeClass('overflow-hidden');
+      } else {
+        // if not mobile, wait for the end of the animation
+        mainContent.find('.item-square').eq(0).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',
+          () => {
+            $('body').removeClass('overflow-hidden');
+            mainContent.find('.item-square').eq(0).off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
+          });
+      }
     }
-  },
-  viewportSize() {
-    /* retrieve the content value of .main-container::before to check the actual mq */
-    return window && window.getComputedStyle(document.querySelector('.main-container'), '::before').getPropertyValue('content').replace(/"/g, '').replace(/'/g, '');
   }
 });

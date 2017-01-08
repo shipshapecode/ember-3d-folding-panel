@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import layout from './template';
-const { $, Component, inject } = Ember;
+const { $, Component, inject: { service } } = Ember;
 
 export default Component.extend({
-  panel: inject.service(),
+  layoutService: service('device/layout'),
+  panel: service(),
   layout,
   tagName: 'li',
   classNameBindings: [':item-square'],
@@ -13,17 +14,16 @@ export default Component.extend({
     this.openItemInfo();
   },
   openItemInfo() {
-    const mq = this.get('panel').viewportSize();
     const gallery = $('.gallery');
-    if (gallery.offset().top > $(window).scrollTop() && mq != 'mobile') {
-    /* if content is visible above the .gallery - scroll before opening the folding panel */
+    if (gallery.offset().top > $(window).scrollTop() && this.get('layoutService.isAtLeastTablet')) {
+      /* if content is visible above the .gallery - scroll before opening the folding panel */
       $('body,html').animate({
         'scrollTop': gallery.offset().top
       }, 100, () => {
         this.get('panel').toggleContent(true);
       });
-    } else if (gallery.offset().top + gallery.height() < $(window).scrollTop() + $(window).height() && mq != 'mobile') {
-    /* if content is visible below the .gallery - scroll before opening the folding panel */
+    } else if (gallery.offset().top + gallery.height() < $(window).scrollTop() + $(window).height() && this.get('layoutService.isAtLeastTablet')) {
+      /* if content is visible below the .gallery - scroll before opening the folding panel */
       $('body,html').animate({
         'scrollTop': gallery.offset().top + gallery.height() - $(window).height()
       }, 100, () => {
