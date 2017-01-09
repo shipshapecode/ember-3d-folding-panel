@@ -1,5 +1,7 @@
+import Ember from  'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+const { run } = Ember;
 
 moduleForAcceptance('Acceptance | basic functionality');
 
@@ -10,16 +12,18 @@ test('Clicking opens/closes the panel', function(assert) {
   click('.item-square:first');
 
   andThen(function() {
-    assert.equal(find('.fold-content h2').text().trim(), 'Client 1', 'Heading is correct');
-    assert.equal(find('.fold-content p').text().trim().substring(0, 20), 'Lorem ipsum dolor si', 'Subheading is correct');
-    assert.ok(find('.main-container').hasClass('fold-is-open'), 'main-container has fold-is-open class');
-  });
+    run.later(function() {
+      assert.equal(find('.fold-content h2').text().trim(), 'Client 1', 'Heading is correct');
+      assert.equal(find('.fold-content p').text().trim().substring(0, 20), 'Lorem ipsum dolor si', 'Subheading is correct');
+      assert.ok(find('.main-container').hasClass('fold-is-open'), 'main-container has fold-is-open class');
 
-  // Close the panel
-  click('.gallery');
+      // Close the panel
+      click('.gallery');
 
-  andThen(function() {
-    assert.ok(!find('.main-container').hasClass('fold-is-open'), 'main-container does not have fold-is-open class');
+      andThen(function() {
+        assert.ok(!find('.main-container').hasClass('fold-is-open'), 'main-container does not have fold-is-open class');
+      });
+    }, 200);
   });
 });
 
@@ -29,16 +33,18 @@ test('Close button closes the panel', function(assert) {
   // Open the panel
   click('.item-square:first');
 
-  andThen(function() {
-    assert.equal(find('.fold-content h2').text().trim(), 'Client 1', 'Heading is correct');
-    assert.equal(find('.fold-content p').text().trim().substring(0, 20), 'Lorem ipsum dolor si', 'Subheading is correct');
-    assert.ok(find('.main-container').hasClass('fold-is-open'), 'main-container has fold-is-open class');
-  });
+  andThen(() => {
+    run.later(function() {
+      assert.equal(find('.fold-content h2').text().trim(), 'Client 1', 'Heading is correct');
+      assert.equal(find('.fold-content p').text().trim().substring(0, 20), 'Lorem ipsum dolor si', 'Subheading is correct');
+      assert.ok(find('.main-container').hasClass('fold-is-open'), 'main-container has fold-is-open class');
 
-  // Close the panel
-  click('.close-button');
+      // Close the panel
+      click('.close-button');
 
-  andThen(function() {
-    assert.ok(!find('.main-container').hasClass('fold-is-open'), 'main-container does not have fold-is-open class');
+      andThen(function() {
+        assert.ok(!find('.main-container').hasClass('fold-is-open'), 'main-container does not have fold-is-open class');
+      });
+    }, 200);
   });
 });
