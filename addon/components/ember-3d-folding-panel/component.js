@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import layout from './template';
-const { $, Component, inject } = Ember;
+const { $, Component, inject: { service } } = Ember;
 
 export default Component.extend({
-  panel: inject.service(),
+  panel: service(),
   layout,
   classNameBindings: [':main-container', 'panel.foldIsOpen:fold-is-open'],
 

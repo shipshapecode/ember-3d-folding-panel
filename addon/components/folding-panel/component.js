@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import layout from './template';
-const { Component, computed: { alias }, inject } = Ember;
+const { Component, computed: { alias }, inject: { service } } = Ember;
 
 export default Component.extend({
-  panel: inject.service(),
+  panel: service(),
   layout,
   selected: alias('panel.selected')
 });

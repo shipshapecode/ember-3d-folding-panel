@@ -1,5 +1,5 @@
 import Ember from 'ember';
-const { $, inject: { service }, Service } = Ember;
+const { $, inject: { service }, run, Service } = Ember;
 
 export default Service.extend({
   layoutService: service('device/layout'),
@@ -9,10 +9,14 @@ export default Service.extend({
     if (bool) {
       // TODO set the content for the page before showing it
       $('body').addClass('overflow-hidden');
-      this.set('foldIsOpen', true);
+      run.join(() => {
+        this.set('foldIsOpen', true);
+      });
     } else {
       /* close the folding panel */
-      this.set('foldIsOpen', false);
+      run.join(() => {
+        this.set('foldIsOpen', false);
+      });
 
       // if on mobile, immediately remove the .overflow-hidden
       if (this.get('layoutService.isMobile')) {
