@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import Component from 'ember-component';
+import service from 'ember-service/inject';
 import layout from './template';
-const { $, Component, inject: { service } } = Ember;
 
 export default Component.extend({
   layoutService: service('device/layout'),

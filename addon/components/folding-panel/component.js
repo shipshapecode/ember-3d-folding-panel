@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import { alias } from 'ember-computed';
+import Component from 'ember-component';
+import service from 'ember-service/inject';
 import layout from './template';
-const { Component, computed: { alias }, inject: { service } } = Ember;
 
 export default Component.extend({
   panel: service(),

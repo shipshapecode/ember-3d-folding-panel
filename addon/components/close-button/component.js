@@ -1,8 +1,8 @@
-import Ember from 'ember';
-const { Component, inject } = Ember;
+import Component from 'ember-component';
+import service from 'ember-service/inject';
 
 export default Component.extend({
-  panel: inject.service(),
+  panel: service(),
   tagName: 'a',
   classNameBindings: [':close-button'],
   click() {

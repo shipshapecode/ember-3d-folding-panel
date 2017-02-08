@@ -1,5 +1,8 @@
 import Ember from 'ember';
-const { $, inject: { service }, run, Service } = Ember;
+import run from 'ember-runloop';
+import Service from 'ember-service';
+import service from 'ember-service/inject';
+const { $ } = Ember;
 
 export default Service.extend({
   layoutService: service('device/layout'),
