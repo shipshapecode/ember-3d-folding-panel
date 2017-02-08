@@ -1,13 +1,13 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
-var shim = require('flexi/lib/pod-templates-shim');
+var shim = require('@html-next/flexi-layouts/lib/pod-templates-shim');
 
 shim(EmberAddon);
 
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
-    babel: {
+    'ember-cli-babel': {
       includePolyfill: true
     }
   });
