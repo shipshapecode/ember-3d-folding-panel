@@ -5,7 +5,7 @@ import service from 'ember-service/inject';
 const { $ } = Ember;
 
 export default Service.extend({
-  layoutService: service('flexi-layouts@device/layout'),
+  layoutService: service('device/layout'),
   foldIsOpen: false,
   toggleContent(bool) {
     const mainContent = $('.main-container');
