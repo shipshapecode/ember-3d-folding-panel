@@ -6,6 +6,6 @@ export default Component.extend({
   tagName: 'a',
   classNameBindings: [':close-button'],
   click() {
-    this.get('panel').toggleContent('', false);
+    this.get('panel').toggleContent(false);
   }
 });

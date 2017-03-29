@@ -11,7 +11,7 @@ export default Component.extend({
   click(event) {
     /* detect click on .gallery::before when the .folding-panel is open */
     if ($(event.target).is('.gallery') && this.get('panel.foldIsOpen')) {
-      this.get('panel').toggleContent('', false);
+      this.get('panel').toggleContent(false);
     }
   }
 });
