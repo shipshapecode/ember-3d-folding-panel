@@ -39,13 +39,6 @@ $L: 1200px;
   }
 }
 
-// super light grid - it works with the .main-container class inside style.scss
-
-@mixin column($percentage, $float-direction:left) {
-  width: 100% * $percentage;
-  float: $float-direction;
-}
-
 /* --------------------------------
 Primary style
 -------------------------------- */
@@ -388,8 +381,9 @@ folding panel
 
     .fold-left,
     .fold-right {
-      @include column(.5);
+      float: left;
       height: 100%;
+      width: 50%;
     }
 
     .fold-right {
