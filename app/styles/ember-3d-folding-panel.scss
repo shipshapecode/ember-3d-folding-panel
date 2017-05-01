@@ -17,21 +17,25 @@ $fold-content-animation: .2s*(3+1)/2; // replace 3 with number of elements that 
 
 // breakpoints
 
-$S:     480px;
-$M:     600px;
-$L:     1100px;
+$S: 768px;
+$M: 992px;
+$L: 1200px;
 
 // media queries
 
 @mixin MQ($canvas) {
   @if $canvas == S {
-   @media only screen and (min-width: $S) { @content; }
-  }
-  @else if $canvas == M {
-   @media only screen and (min-width: $M) { @content; }
-  }
-  @else if $canvas == L {
-   @media only screen and (min-width: $L) { @content; }
+    @media only screen and (min-width: $S) {
+      @content;
+    }
+  } @else if $canvas == M {
+    @media only screen and (min-width: $M) {
+      @content;
+    }
+  } @else if $canvas == L {
+    @media only screen and (min-width: $L) {
+      @content;
+    }
   }
 }
 
@@ -47,12 +51,12 @@ Primary style
 -------------------------------- */
 
 *, *::after, *::before {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
-	color: $color-2;
-	text-decoration: none;
+  color: $color-2;
+  text-decoration: none;
 }
 
 /* --------------------------------
@@ -60,7 +64,7 @@ Patterns - reusable parts of our design
 -------------------------------- */
 
 .overflow-hidden {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 /* --------------------------------
@@ -68,182 +72,182 @@ Main content
 -------------------------------- */
 
 .main-container {
-	overflow-x: hidden;
+  overflow-x: hidden;
 
-	&::before {
-		/* never visible - this is used in jQuery to check the current MQ */
-		display: none;
-		content: 'mobile';
-	}
+  &::before {
+    /* never visible - this is used in jQuery to check the current MQ */
+    display: none;
+    content: 'mobile';
+  }
 
-	> * {
-		transition: transform $fold-animation $fold-content-animation;
-	}
+  > * {
+    transition: transform $fold-animation $fold-content-animation;
+  }
 
-	&.fold-is-open > * {
-		/* on mobile - translate .main-container content to the right when the .folding-panel is open */
-		transform: translateX(100%);
-		transition: transform $fold-animation 0s;
-	}
+  &.fold-is-open > * {
+    /* on mobile - translate .main-container content to the right when the .folding-panel is open */
+    transform: translateX(100%);
+    transition: transform $fold-animation 0s;
+  }
 
-	@include MQ(M) {
+  @include MQ(M) {
 
-		&.fold-is-open > * {
-			transform: translateX(600px);
-		}
-	}
+    &.fold-is-open > * {
+      transform: translateX(600px);
+    }
+  }
 
-	@include MQ(L) {
+  @include MQ(L) {
 
-		&::before {
-			/* never visible - this is used in jQuery to check the current MQ */
-			content: 'desktop';
-		}
+    &::before {
+      /* never visible - this is used in jQuery to check the current MQ */
+      content: 'desktop';
+    }
 
-		&.fold-is-open > * {
-			/* reset style - on bigger devices we translate the gallery items */
-			transform: translateX(0);
-		}
-	}
+    &.fold-is-open > * {
+      /* reset style - on bigger devices we translate the gallery items */
+      transform: translateX(0);
+    }
+  }
 }
 
 .gallery {
-	width: 100%;
+  width: 100%;
 
-	&::before {
-		/* this is the dark layer covering the .gallery when the .folding-panel is open */
-		display: block;
-		content: '';
-		position: absolute;
-		z-index: 1;
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		background-color: rgba($color-5, .6);
-		opacity: 0;
-		visibility: hidden;
-		transition: opacity  $fold-animation $fold-content-animation, visibility 0s $fold-animation+$fold-content-animation;
-	}
+  &::before {
+    /* this is the dark layer covering the .gallery when the .folding-panel is open */
+    display: block;
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color-5, .6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $fold-animation $fold-content-animation, visibility 0s $fold-animation+$fold-content-animation;
+  }
 
-	.fold-is-open &::before {
-		visibility: visible;
-		opacity: 1;
-		transition: opacity  $fold-animation 0s, visibility 0s 0s;
-	}
+  .fold-is-open &::before {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity $fold-animation 0s, visibility 0s 0s;
+  }
 }
 
 .item-square {
-	height: 300px;
-	text-align: center;
+  height: 300px;
+  text-align: center;
 
-	/* Force Hardware Acceleration */
-	transform: translateZ(0);
-	backface-visibility: hidden;
+  /* Force Hardware Acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
-	transition: transform $fold-animation $fold-content-animation;
+  transition: transform $fold-animation $fold-content-animation;
 
-	a {
-		cursor: pointer;
-		overflow: hidden;
-		color: $color-6;
-		@include font-smoothing;
+  a {
+    cursor: pointer;
+    overflow: hidden;
+    color: $color-6;
+    @include font-smoothing;
 
-		&.dark-text {
-			color: $color-1;
+    &.dark-text {
+      color: $color-1;
 
-			b {
-				border-color: $color-1;
-			}
-		}
-	}
+      b {
+        border-color: $color-1;
+      }
+    }
+  }
 
-	&:nth-of-type(1) {
-		background-color: $color-1;
-	}
+  &:nth-of-type(1) {
+    background-color: $color-1;
+  }
 
-	&:nth-of-type(2) {
-		background-color: $color-2;
-	}
+  &:nth-of-type(2) {
+    background-color: $color-2;
+  }
 
-	&:nth-of-type(3) {
-		background-color: $color-3;
-	}
+  &:nth-of-type(3) {
+    background-color: $color-3;
+  }
 
-	&:nth-of-type(4) {
-		background-color: $color-4;
-	}
+  &:nth-of-type(4) {
+    background-color: $color-4;
+  }
 
-	h2 {
-		font-size: 2.2rem;
-	}
+  h2 {
+    font-size: 2.2rem;
+  }
 
-	p {
-		line-height: 1.2;
-		font-size: 1.4rem;
-		opacity: 0.6;
-		padding: 1em 0;
-	}
+  p {
+    line-height: 1.2;
+    font-size: 1.4rem;
+    opacity: 0.6;
+    padding: 1em 0;
+  }
 
-	b {
-		display: inline-block;
-		font: {
-			size: 1.2rem;
-			weight: bold;
-		}
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		padding: 1.3em 1.3em 1em 1.3em;
-		border-radius: 50em;
-		border: 1px solid $color-6;
-	}
+  b {
+    display: inline-block;
+    font: {
+      size: 1.2rem;
+      weight: bold;
+    }
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.3em 1.3em 1em 1.3em;
+    border-radius: 50em;
+    border: 1px solid $color-6;
+  }
 
-	@include MQ(L) {
-		height: 520px;
-		transition: transform $fold-animation $fold-content-animation;
+  @include MQ(L) {
+    height: 520px;
+    transition: transform $fold-animation $fold-content-animation;
 
-		h2 {
-			font-size: 3rem;
-		}
+    h2 {
+      font-size: 3rem;
+    }
 
-		p {
-			font-size: 1.6rem;
-		}
+    p {
+      font-size: 1.6rem;
+    }
 
-		h2, p, .extra-content * {
-			transform: translateY(30px);
-			transition: transform 0.3s 0.1s;
-		}
+    h2, p, .extra-content * {
+      transform: translateY(30px);
+      transition: transform 0.3s 0.1s;
+    }
 
-		b {
-			opacity: 0;
-			transform: translateY(20px);
-			transition: opacity 0.3s 0s, transform 0.3s 0s;
-		}
+    b {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s 0s, transform 0.3s 0s;
+    }
 
-		& a:hover {
+    & a:hover {
 
-			h2, p, .extra-content * {
-				transform: translateY(0);
-				transition: transform 0.3s 0s;
-			}
+      h2, p, .extra-content * {
+        transform: translateY(0);
+        transition: transform 0.3s 0s;
+      }
 
-			b {
-				opacity: 1;
-				transform: translateY(0);
-				transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
-			}
-		}
+      b {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+      }
+    }
 
-		.fold-is-open & {
-			transition: transform $fold-animation 0s;
-			transform: translateX(-400px);
+    .fold-is-open & {
+      transition: transform $fold-animation 0s;
+      transform: translateX(-400px);
 
-			&:nth-of-type(2n) {
-				transform: translateX(400px);
-			}
-		}
-	}
+      &:nth-of-type(2n) {
+        transform: translateX(400px);
+      }
+    }
+  }
 }
 
 /* --------------------------------
@@ -251,250 +255,250 @@ folding panel
 -------------------------------- */
 
 .folding-panel {
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	height: 100vh;
-	width: 100%;
-	visibility: hidden;
-	overflow: hidden;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  visibility: hidden;
+  overflow: hidden;
 
-	transition: visibility 0s $fold-animation+$fold-content-animation;
+  transition: visibility 0s $fold-animation+$fold-content-animation;
 
-	.fold-left,
-	.fold-right {
-		/* the :after elements of .fold-left and .fold-right are the 2 fold sides */
-		width: 100%;
-		height: 100vh;
-		overflow: hidden;
-		position: relative;
+  .fold-left,
+  .fold-right {
+    /* the :after elements of .fold-left and .fold-right are the 2 fold sides */
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
 
-		/* enable a 3D-space for children elements */
-		perspective: 2000px;
+    /* enable a 3D-space for children elements */
+    perspective: 2000px;
 
-		&::after {
-			/* 2 fold sides */
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%;
+    &::after {
+      /* 2 fold sides */
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
 
-			/* Force Hardware Acceleration */
-			transform: translateZ(0);
-			backface-visibility: hidden;
+      /* Force Hardware Acceleration */
+      transform: translateZ(0);
+      backface-visibility: hidden;
 
-			transition: transform $fold-animation $fold-content-animation, background-color $fold-animation $fold-content-animation;
-		}
-	}
+      transition: transform $fold-animation $fold-content-animation, background-color $fold-animation $fold-content-animation;
+    }
+  }
 
-	.fold-right {
-		perspective-origin: 0% 50%;
+  .fold-right {
+    perspective-origin: 0% 50%;
 
-		&::after {
-			transform-origin: right center;
-			transform: translateX(-100%) rotateY(-90deg);
-			background-color: darken($color-3, 10%);
-		}
-	}
+    &::after {
+      transform-origin: right center;
+      transform: translateX(-100%) rotateY(-90deg);
+      background-color: darken($color-3, 10%);
+    }
+  }
 
-	.fold-left {
-		/* on mobile only the right fold side is visible */
-		display: none;
+  .fold-left {
+    /* on mobile only the right fold side is visible */
+    display: none;
 
-		&::after {
-			background-color: lighten($color-3, 12%);
-		}
-	}
+    &::after {
+      background-color: lighten($color-3, 12%);
+    }
+  }
 
-	.close-button {
-		/* 'X' close icon */
-		position: absolute;
-		z-index: 1;
-		display: inline-block;
-		top: 10px;
-		right: 10px;
-		height: 44px;
-		width: 44px;
+  .close-button {
+    /* 'X' close icon */
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+    top: 10px;
+    right: 10px;
+    height: 44px;
+    width: 44px;
 
-		/* image replacement */
-		overflow: hidden;
-		text-indent: 100%;
-		white-space: nowrap;
+    /* image replacement */
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
 
-		opacity: 0;
-		transition: opacity .2s 0s;
+    opacity: 0;
+    transition: opacity .2s 0s;
 
     &:hover {
       cursor: pointer;
     }
 
-		&::after,
-		&::before {
-			/* lines of 'X' icon */
-			content: '';
-			position: absolute;
-			height: 3px;
-			width: 32px;
-			left: 50%;
-	    	top: 50%;
-			background-color: $color-2;
-			backface-visibility: hidden;
-			transition: opacity .2s;
-		}
+    &::after,
+    &::before {
+      /* lines of 'X' icon */
+      content: '';
+      position: absolute;
+      height: 3px;
+      width: 32px;
+      left: 50%;
+      top: 50%;
+      background-color: $color-2;
+      backface-visibility: hidden;
+      transition: opacity .2s;
+    }
 
-		&::after {
-			transform: translateX(-50%) translateY(-50%) rotate(45deg);
-		}
+    &::after {
+      transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    }
 
-		&::before {
-			transform: translateX(-50%) translateY(-50%) rotate(-45deg);
-		}
-	}
+    &::before {
+      transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    }
+  }
 
-	&.is-open {
-		visibility: visible;
-		transition: visibility 0s 0s;
+  &.is-open {
+    visibility: visible;
+    transition: visibility 0s 0s;
 
-		.fold-right::after,
-		.fold-left::after {
-			transform: translateX(0);
-			transition: transform $fold-animation 0s, background-color $fold-animation 0s;
-		}
+    .fold-right::after,
+    .fold-left::after {
+      transform: translateX(0);
+      transition: transform $fold-animation 0s, background-color $fold-animation 0s;
+    }
 
-		.fold-right::after {
-			background-color: lighten($color-3, 12%);
-		}
+    .fold-right::after {
+      background-color: lighten($color-3, 12%);
+    }
 
-		.close-button {
-			opacity: 1;
-			transition: opacity .2s $fold-animation;
-		}
-	}
+    .close-button {
+      opacity: 1;
+      transition: opacity .2s $fold-animation;
+    }
+  }
 
-	@include MQ(M) {
-		width: 600px;
-	}
+  @include MQ(M) {
+    width: 600px;
+  }
 
-	@include MQ(L) {
-		@include center(x);
-		width: 800px;
+  @include MQ(L) {
+    @include center(x);
+    width: 800px;
 
-		.fold-left,
-		.fold-right {
-			@include column(.5);
-			height: 100%;
-		}
+    .fold-left,
+    .fold-right {
+      @include column(.5);
+      height: 100%;
+    }
 
-		.fold-right {
-			/* change perspective-origin so that the 2 fold sides have the same vanishing point */
-			perspective-origin: 0% 50%;
+    .fold-right {
+      /* change perspective-origin so that the 2 fold sides have the same vanishing point */
+      perspective-origin: 0% 50%;
 
-			&::after {
-				transform-origin: right center;
-				transform: translateX(-100%) rotateY(-90deg);
-			}
-		}
+      &::after {
+        transform-origin: right center;
+        transform: translateX(-100%) rotateY(-90deg);
+      }
+    }
 
-		.fold-left {
-			display: block;
-			/* change perspective-origin so that the 2 fold sides have the same vanishing point */
-			perspective-origin: 100% 50%;
+    .fold-left {
+      display: block;
+      /* change perspective-origin so that the 2 fold sides have the same vanishing point */
+      perspective-origin: 100% 50%;
 
-			&::after {
-				transform-origin: left center;
-				transform: translateX(100%) rotateY(90deg);
-			}
-		}
-	}
+      &::after {
+        transform-origin: left center;
+        transform: translateX(100%) rotateY(90deg);
+      }
+    }
+  }
 }
 
 .fold-content {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	padding: 4em 2em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 4em 2em;
 
-	visibility: hidden;
-	transition: visibility 0s $fold-content-animation;
+  visibility: hidden;
+  transition: visibility 0s $fold-content-animation;
 
-	> * {
-		opacity: 0;
-		transform: translateY(20px);
-	}
+  > * {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-	h2 {
-		font-size: 2.4rem;
+  h2 {
+    font-size: 2.4rem;
 
-		transition: transform $fold-content-animation/2 $fold-content-animation/2, opacity $fold-content-animation/2 $fold-content-animation/2;
-	}
+    transition: transform $fold-content-animation/2 $fold-content-animation/2, opacity $fold-content-animation/2 $fold-content-animation/2;
+  }
 
-	p, em {
-		line-height: 1.6;
-	}
+  p, em {
+    line-height: 1.6;
+  }
 
-	em {
-		display: inline-block;
-		margin: 1em 0;
-		font-size: 1.8rem;
-		color: lighten($color-1, 30%);
+  em {
+    display: inline-block;
+    margin: 1em 0;
+    font-size: 1.8rem;
+    color: lighten($color-1, 30%);
 
-		transition: transform $fold-content-animation/2 $fold-content-animation/4, opacity $fold-content-animation/2 $fold-content-animation/4;
-	}
+    transition: transform $fold-content-animation/2 $fold-content-animation/4, opacity $fold-content-animation/2 $fold-content-animation/4;
+  }
 
-	p {
-		margin-bottom: 1em;
-		font-size: 1.4rem;
-		transition: transform $fold-content-animation/2 0s, opacity $fold-content-animation/2 0s;
-	}
+  p {
+    margin-bottom: 1em;
+    font-size: 1.4rem;
+    transition: transform $fold-content-animation/2 0s, opacity $fold-content-animation/2 0s;
+  }
 
-	.is-open & {
-		overflow-y: auto;
-		-webkit-overflow-scrolling: touch;
-		visibility: visible;
-		transition: visibility 0s $fold-animation;
+  .is-open & {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    visibility: visible;
+    transition: visibility 0s $fold-animation;
 
-		> * {
-			opacity: 1;
-			transform: translateY(0);
-		}
+    > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-		h2 {
-			transition: transform $fold-content-animation/2 $fold-animation, opacity $fold-content-animation/2 $fold-animation;
-		}
+    h2 {
+      transition: transform $fold-content-animation/2 $fold-animation, opacity $fold-content-animation/2 $fold-animation;
+    }
 
-		em {
-			transition: transform $fold-content-animation/2 $fold-animation+$fold-content-animation/4, opacity $fold-content-animation/2 $fold-animation+$fold-content-animation/4;
-		}
+    em {
+      transition: transform $fold-content-animation/2 $fold-animation+$fold-content-animation/4, opacity $fold-content-animation/2 $fold-animation+$fold-content-animation/4;
+    }
 
-		p {
-			transition: transform $fold-content-animation/2 $fold-animation+$fold-content-animation/2, opacity $fold-content-animation/2 $fold-animation+$fold-content-animation/2;
-		}
-	}
+    p {
+      transition: transform $fold-content-animation/2 $fold-animation+$fold-content-animation/2, opacity $fold-content-animation/2 $fold-animation+$fold-content-animation/2;
+    }
+  }
 
-	@include MQ(M) {
-		h2 {
-			font-size: 3.2rem;
-		}
-	}
+  @include MQ(M) {
+    h2 {
+      font-size: 3.2rem;
+    }
+  }
 
-	@include MQ(L) {
-		padding: 4em;
+  @include MQ(L) {
+    padding: 4em;
 
-		> * {
-			transform: translateY(40px);
-		}
+    > * {
+      transform: translateY(40px);
+    }
 
-		em {
-			font-size: 2.2rem;
-		}
+    em {
+      font-size: 2.2rem;
+    }
 
-		p {
-			font-size: 1.6rem;
-		}
-	}
+    p {
+      font-size: 1.6rem;
+    }
+  }
 }

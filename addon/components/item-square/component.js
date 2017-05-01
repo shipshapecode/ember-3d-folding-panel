@@ -8,7 +8,7 @@ export default Component.extend({
   panel: service(),
   layout,
   tagName: 'centered',
-  classNames: ['item-square', 'col-md-6', 'col-xs-12'],
+  classNames: ['item-square', 'col-xs-12', 'col-lg-6', ],
   click(event) {
     event.preventDefault();
     this.set('panel.selected', this.get('item'));
