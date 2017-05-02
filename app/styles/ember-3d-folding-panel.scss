@@ -105,39 +105,17 @@ Main content
 }
 
 .gallery {
-  width: 100%;
-
   &::before {
-    /* this is the dark layer covering the .gallery when the .folding-panel is open */
-    display: block;
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
     background-color: rgba($color-5, .6);
-    opacity: 0;
-    visibility: hidden;
     transition: opacity $fold-animation $fold-content-animation, visibility 0s $fold-animation+$fold-content-animation;
   }
 
   .fold-is-open &::before {
-    visibility: visible;
-    opacity: 1;
     transition: opacity $fold-animation 0s, visibility 0s 0s;
   }
 }
 
 .item-square {
-  height: 300px;
-  text-align: center;
-
-  /* Force Hardware Acceleration */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-
   transition: transform $fold-animation $fold-content-animation;
 
   a {
@@ -171,27 +149,7 @@ Main content
     background-color: $color-4;
   }
 
-  h2 {
-    font-size: 2.2rem;
-  }
-
-  p {
-    line-height: 1.2;
-    font-size: 1.4rem;
-    opacity: 0.6;
-    padding: 1em 0;
-  }
-
   b {
-    display: inline-block;
-    font: {
-      size: 1.2rem;
-      weight: bold;
-    }
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 1.3em 1.3em 1em 1.3em;
-    border-radius: 50em;
     border: 1px solid $color-6;
   }
 
@@ -372,56 +330,24 @@ folding panel
 }
 
 .fold-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  padding: 4em 2em;
-
-  visibility: hidden;
   transition: visibility 0s $fold-content-animation;
 
-  > * {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
   h2 {
-    font-size: 2.4rem;
-
     transition: transform $fold-content-animation/2 $fold-content-animation/2, opacity $fold-content-animation/2 $fold-content-animation/2;
   }
 
-  p, em {
-    line-height: 1.6;
-  }
-
   em {
-    display: inline-block;
-    margin: 1em 0;
-    font-size: 1.8rem;
     color: lighten($color-1, 30%);
 
     transition: transform $fold-content-animation/2 $fold-content-animation/4, opacity $fold-content-animation/2 $fold-content-animation/4;
   }
 
   p {
-    margin-bottom: 1em;
-    font-size: 1.4rem;
     transition: transform $fold-content-animation/2 0s, opacity $fold-content-animation/2 0s;
   }
 
   .is-open & {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    visibility: visible;
     transition: visibility 0s $fold-animation;
-
-    > * {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
     h2 {
       transition: transform $fold-content-animation/2 $fold-animation, opacity $fold-content-animation/2 $fold-animation;

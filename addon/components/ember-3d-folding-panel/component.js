@@ -6,7 +6,8 @@ import layout from './template';
 export default Component.extend({
   panel: service(),
   layout,
-  classNameBindings: [':main-container', 'panel.foldIsOpen:fold-is-open'],
+  classNames: ['main-container'],
+  classNameBindings: ['panel.foldIsOpen:fold-is-open'],
 
   click(event) {
     /* detect click on .gallery::before when the .folding-panel is open */

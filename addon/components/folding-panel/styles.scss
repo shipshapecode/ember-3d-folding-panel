@@ -1,0 +1,49 @@
+& {
+  .fold-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 4em 2em;
+
+    visibility: hidden;
+
+    > * {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    em {
+      display: inline-block;
+      margin: 1em 0;
+      font-size: 1.8rem;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+    }
+
+    p, em {
+      line-height: 1.6;
+    }
+
+    p {
+      margin-bottom: 1em;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+&.is-open {
+  .fold-content {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    visibility: visible;
+
+    > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

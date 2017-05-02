@@ -6,5 +6,7 @@ import layout from './template';
 export default Component.extend({
   panel: service(),
   layout,
-  selected: alias('panel.selected')
+  selected: alias('panel.selected'),
+  classNames: ['folding-panel'],
+  classNameBindings: ['panel.foldIsOpen:is-open']
 });
