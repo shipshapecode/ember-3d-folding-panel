@@ -2,13 +2,14 @@ import $ from 'jquery';
 import Component from 'ember-component';
 import service from 'ember-service/inject';
 import layout from './template';
+import LayoutClasses from '../../mixins/layout-classes';
 
-export default Component.extend({
+export default Component.extend(LayoutClasses, {
   layoutService: service('device/layout'),
   panel: service(),
   layout,
-  tagName: 'li',
-  classNameBindings: [':item-square'],
+  tagName: 'centered',
+  classNames: ['item-square', 'col-xs-12', 'col-lg-6'],
   click(event) {
     event.preventDefault();
     this.set('panel.selected', this.get('item'));

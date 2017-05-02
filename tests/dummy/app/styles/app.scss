@@ -35,7 +35,7 @@ header {
 		color: $color-1;
 	}
 
-	@include MQ(M) {
+	@media(min-width: 992px) {
 		height: 200px;
 		line-height: 200px;
 
