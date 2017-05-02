@@ -2,8 +2,9 @@ import $ from 'jquery';
 import Component from 'ember-component';
 import service from 'ember-service/inject';
 import layout from './template';
+import LayoutClasses from '../../mixins/layout-classes';
 
-export default Component.extend({
+export default Component.extend(LayoutClasses, {
   layoutService: service('device/layout'),
   panel: service(),
   layout,

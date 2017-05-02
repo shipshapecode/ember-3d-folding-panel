@@ -20,11 +20,33 @@
 
 &.is-desktop {
   width: 600px;
+  .fold-content {
+
+    h2 {
+      font-size: 3.2rem;
+    }
+  }
 }
 
 &.is-huge {
   @include center(x);
   width: 800px;
+
+  .fold-content {
+    padding: 4em;
+
+    > * {
+      transform: translateY(40px);
+    }
+
+    em {
+      font-size: 2.2rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+  }
 
   .fold-left,
   .fold-right {
