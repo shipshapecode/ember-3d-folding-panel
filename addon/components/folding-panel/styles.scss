@@ -1,3 +1,60 @@
+// center vertically and/or horizontally an absolute positioned element
+
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translateX(-50%) translateY(-50%);
+  } @else if $xy == x {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  } @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+}
+
+&.is-desktop {
+  width: 600px;
+}
+
+&.is-huge {
+  @include center(x);
+  width: 800px;
+
+  .fold-left,
+  .fold-right {
+    float: left;
+    height: 100%;
+    width: 50%;
+  }
+
+  .fold-right {
+    /* change perspective-origin so that the 2 fold sides have the same vanishing point */
+    perspective-origin: 0% 50%;
+
+    &::after {
+      transform-origin: right center;
+      transform: translateX(-100%) rotateY(-90deg);
+    }
+  }
+
+  .fold-left {
+    display: block;
+    /* change perspective-origin so that the 2 fold sides have the same vanishing point */
+    perspective-origin: 100% 50%;
+
+    &::after {
+      transform-origin: left center;
+      transform: translateX(100%) rotateY(90deg);
+    }
+  }
+}
+
 & {
   .fold-content {
     position: absolute;
@@ -33,17 +90,17 @@
       font-size: 1.4rem;
     }
   }
-}
 
-&.is-open {
-  .fold-content {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    visibility: visible;
+  &.is-open {
+    .fold-content {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      visibility: visible;
 
-    > * {
-      opacity: 1;
-      transform: translateY(0);
+      > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 }

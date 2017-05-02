@@ -1,3 +1,23 @@
+&.is-desktop {
+
+  &.fold-is-open > * {
+    transform: translateX(600px);
+  }
+}
+
+&.is-huge {
+
+  &::before {
+    /* never visible - this is used in jQuery to check the current MQ */
+    content: 'desktop';
+  }
+
+  &.fold-is-open > * {
+    /* reset style - on bigger devices we translate the gallery items */
+    transform: translateX(0);
+  }
+}
+
 & {
   .gallery {
     width: 100%;

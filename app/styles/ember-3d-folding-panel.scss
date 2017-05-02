@@ -39,6 +39,7 @@ $L: 1200px;
   }
 }
 
+
 /* --------------------------------
 Primary style
 -------------------------------- */
@@ -81,26 +82,6 @@ Main content
     /* on mobile - translate .main-container content to the right when the .folding-panel is open */
     transform: translateX(100%);
     transition: transform $fold-animation 0s;
-  }
-
-  @include MQ(M) {
-
-    &.fold-is-open > * {
-      transform: translateX(600px);
-    }
-  }
-
-  @include MQ(L) {
-
-    &::before {
-      /* never visible - this is used in jQuery to check the current MQ */
-      content: 'desktop';
-    }
-
-    &.fold-is-open > * {
-      /* reset style - on bigger devices we translate the gallery items */
-      transform: translateX(0);
-    }
   }
 }
 
@@ -288,43 +269,6 @@ folding panel
     .close-button {
       opacity: 1;
       transition: opacity .2s $fold-animation;
-    }
-  }
-
-  @include MQ(M) {
-    width: 600px;
-  }
-
-  @include MQ(L) {
-    @include center(x);
-    width: 800px;
-
-    .fold-left,
-    .fold-right {
-      float: left;
-      height: 100%;
-      width: 50%;
-    }
-
-    .fold-right {
-      /* change perspective-origin so that the 2 fold sides have the same vanishing point */
-      perspective-origin: 0% 50%;
-
-      &::after {
-        transform-origin: right center;
-        transform: translateX(-100%) rotateY(-90deg);
-      }
-    }
-
-    .fold-left {
-      display: block;
-      /* change perspective-origin so that the 2 fold sides have the same vanishing point */
-      perspective-origin: 100% 50%;
-
-      &::after {
-        transform-origin: left center;
-        transform: translateX(100%) rotateY(90deg);
-      }
     }
   }
 }
