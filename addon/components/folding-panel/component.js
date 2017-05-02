@@ -7,7 +7,7 @@ import LayoutClasses from '../../mixins/layout-classes';
 export default Component.extend(LayoutClasses, {
   panel: service(),
   layout,
-  selected: alias('panel.selected'),
   classNames: ['folding-panel'],
-  classNameBindings: ['panel.foldIsOpen:is-open']
+  classNameBindings: ['panel.foldIsOpen:is-open'],
+  selected: alias('panel.selected')
 });
