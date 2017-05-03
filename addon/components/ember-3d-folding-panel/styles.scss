@@ -35,10 +35,9 @@
       opacity: 0;
       visibility: hidden;
     }
-
-    .fold-is-open &::before {
-      visibility: visible;
-      opacity: 1;
-    }
+  }
+  &.fold-is-open .gallery::before {
+    visibility: visible;
+    opacity: 1;
   }
 }

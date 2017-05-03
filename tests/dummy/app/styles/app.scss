@@ -11,7 +11,7 @@ body {
 		family: $f-primary; // variables inside partials > _variables.scss
 	}
 	color: $color-1;
-	background-color: $color-5;
+	background-color: $overlay-color;
 }
 
 .client-image {
