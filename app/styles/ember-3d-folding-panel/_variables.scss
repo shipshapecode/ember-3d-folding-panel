@@ -1,0 +1,17 @@
+// Ember 3D Folding Panel Defaults
+$ember-3d-folding-panel-defaults: (
+  'color-1': #363558, // Martinique
+  'color-2': #544173, // Mulled Wine
+  'color-3': #dadcdc, // Iron
+  'color-4': #65d29b, // Emerald
+  'color-5': #1c1726, // Bastille
+  'color-6': #ffffff, // White
+  'fold-animation': .5s,
+  'fold-content-animation': .2s*(3+1)/2 // replace 3 with number of elements that you want to animate
+);
+
+// Empty config if user does not add their own
+$ember-3d-folding-panel: () !default;
+
+// Merge defaults and user added config
+$ember-3d-folding-panel: map-merge($ember-3d-folding-panel-defaults, $ember-3d-folding-panel);

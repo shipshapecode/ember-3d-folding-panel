@@ -1,19 +1,17 @@
 @import './ember-3d-folding-panel/reset';
 @import './ember-3d-folding-panel/mixins';
+@import './ember-3d-folding-panel/variables';
+@import './ember-3d-folding-panel/functions';
 
-// colors
-
-$color-1: #363558; // Martinique
-$color-2: #544173; // Mulled Wine
-$color-3: #dadcdc; // Iron
-$color-4: #65d29b; // Emerald
-$color-5: #1c1726; // Bastille
-$color-6: #ffffff; // White
-
-// animation duration
-
-$fold-animation: .5s;
-$fold-content-animation: .2s*(3+1)/2; // replace 3 with number of elements that you want to animate
+// Grab variables from sass map
+$color-1: _e3dfp('color-1');
+$color-2: _e3dfp('color-2');
+$color-3: _e3dfp('color-3');
+$color-4: _e3dfp('color-4');
+$color-5: _e3dfp('color-5');
+$color-6: _e3dfp('color-6');
+$fold-animation: _e3dfp('fold-animation');
+$fold-content-animation: _e3dfp('fold-content-animation');
 
 
 /* --------------------------------
