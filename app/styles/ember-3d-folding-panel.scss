@@ -9,10 +9,10 @@ $color-2: _e3dfp('color-2');
 $color-3: _e3dfp('color-3');
 $color-4: _e3dfp('color-4');
 $color-6: _e3dfp('color-6');
+$itemSquareColors: $color-1 $color-2 $color-3 $color-4;
 $fold-animation: _e3dfp('fold-animation');
 $fold-content-animation: _e3dfp('fold-content-animation');
 $overlay-color: _e3dfp('overlay-color');
-
 
 /* --------------------------------
 Primary style
@@ -40,14 +40,6 @@ Main content
 -------------------------------- */
 
 .main-container {
-  overflow-x: hidden;
-
-  &::before {
-    /* never visible - this is used in jQuery to check the current MQ */
-    display: none;
-    content: 'mobile';
-  }
-
   > * {
     transition: transform $fold-animation $fold-content-animation;
   }
@@ -88,20 +80,11 @@ Main content
     }
   }
 
-  &:nth-of-type(1) {
-    background-color: $color-1;
-  }
-
-  &:nth-of-type(2) {
-    background-color: $color-2;
-  }
-
-  &:nth-of-type(3) {
-    background-color: $color-3;
-  }
-
-  &:nth-of-type(4) {
-    background-color: $color-4;
+  @for $i from 1 through length($itemSquareColors) {
+    $itemSquareColor: nth($itemSquareColors, $i);
+    &:nth-of-type(#{$i}) {
+      background-color: $itemSquareColor;
+    }
   }
 
   b {

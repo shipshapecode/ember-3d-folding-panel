@@ -17,8 +17,16 @@
     transform: translateX(0);
   }
 }
-
+// .main-container
 & {
+  overflow-x: hidden;
+
+  &::before {
+    /* never visible - this is used in jQuery to check the current MQ */
+    display: none;
+    content: 'mobile';
+  }
+
   .gallery {
     width: 100%;
 
