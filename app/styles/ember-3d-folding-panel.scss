@@ -92,49 +92,10 @@ Main content
   }
 
   &.is-huge {
-    height: 520px;
     transition: transform $fold-animation $fold-content-animation;
-
-    h2 {
-      font-size: 3rem;
-    }
-
-    p {
-      font-size: 1.6rem;
-    }
-
-    h2, p, .extra-content * {
-      transform: translateY(30px);
-      transition: transform 0.3s 0.1s;
-    }
-
-    b {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.3s 0s, transform 0.3s 0s;
-    }
-
-    & a:hover {
-
-      h2, p, .extra-content * {
-        transform: translateY(0);
-        transition: transform 0.3s 0s;
-      }
-
-      b {
-        opacity: 1;
-        transform: translateY(0);
-        transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
-      }
-    }
 
     .fold-is-open & {
       transition: transform $fold-animation 0s;
-      transform: translateX(-400px);
-
-      &:nth-of-type(2n) {
-        transform: translateX(400px);
-      }
     }
   }
 }
@@ -144,41 +105,11 @@ folding panel
 -------------------------------- */
 
 .folding-panel {
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  visibility: hidden;
-  overflow: hidden;
-
   transition: visibility 0s $fold-animation+$fold-content-animation;
 
   .fold-left,
   .fold-right {
-    /* the :after elements of .fold-left and .fold-right are the 2 fold sides */
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-
-    /* enable a 3D-space for children elements */
-    perspective: 2000px;
-
     &::after {
-      /* 2 fold sides */
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-
-      /* Force Hardware Acceleration */
-      transform: translateZ(0);
-      backface-visibility: hidden;
-
       transition: transform $fold-animation $fold-content-animation, background-color $fold-animation $fold-content-animation;
     }
   }
