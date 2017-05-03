@@ -1,3 +1,10 @@
+// antialiasing mode font rendering
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 & {
   height: 300px;
   text-align: center;
@@ -5,6 +12,12 @@
   /* Force Hardware Acceleration */
   transform: translateZ(0);
   backface-visibility: hidden;
+
+  a {
+    cursor: pointer;
+    overflow: hidden;
+    @include font-smoothing;
+  }
 
   b {
     display: inline-block;

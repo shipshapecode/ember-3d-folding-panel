@@ -66,10 +66,7 @@ Main content
   transition: transform $fold-animation $fold-content-animation;
 
   a {
-    cursor: pointer;
-    overflow: hidden;
     color: $color-6;
-    @include font-smoothing;
 
     &.dark-text {
       color: $color-1;
