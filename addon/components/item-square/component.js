@@ -17,18 +17,20 @@ export default Component.extend(LayoutClasses, {
   },
   openItemInfo() {
     const gallery = $('.gallery');
-    if (gallery.offset().top > $(window).scrollTop() && this.get('layoutService.isAtLeastTablet')) {
+    const galleryOffsetTop = gallery.offset().top;
+    let scrollTop = null;
+
+    if (this.get('layoutService.isAtLeastTablet')) {
       /* if content is visible above the .gallery - scroll before opening the folding panel */
-      $('body,html').animate({
-        'scrollTop': gallery.offset().top
-      }, 100, () => {
-        this.get('panel').toggleContent(true);
-      });
-    } else if (gallery.offset().top + gallery.height() < $(window).scrollTop() + $(window).height() && this.get('layoutService.isAtLeastTablet')) {
-      /* if content is visible below the .gallery - scroll before opening the folding panel */
-      $('body,html').animate({
-        'scrollTop': gallery.offset().top + gallery.height() - $(window).height()
-      }, 100, () => {
+      if (galleryOffsetTop > $(window).scrollTop()) {
+        scrollTop = galleryOffsetTop;
+      } else if (galleryOffsetTop + gallery.height() < $(window).scrollTop() + $(window).height()) {
+        /* if content is visible below the .gallery - scroll before opening the folding panel */
+        scrollTop = galleryOffsetTop + gallery.height() - $(window).height();
+      }
+    }
+    if (scrollTop) {
+      $('body,html').animate({ scrollTop }, 100, () => {
         this.get('panel').toggleContent(true);
       });
     } else {
