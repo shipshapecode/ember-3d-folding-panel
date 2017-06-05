@@ -29,6 +29,33 @@ Ember-3d-folding-panel is based on [3D Folding Panel](https://codyhouse.co/gem/3
 `items` are defined as an array of objects, these should contain `heading` and `subheading`.
  You can also display extra info inside of the `item-square`.
  
+ The route from the dummy app, which contains an array of items, looks like this:
+ ```js
+ export default Route.extend({
+  model() {
+    return [
+      {
+        heading: 'Client 1',
+        subheading: 'Lorem ipsum dolor sit amet, consectetur.',
+        panelHeading: 'Client 1',
+        panelSubheading: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, laboriosam?',
+        imageURL: 'img/logo1.png',
+        panelInfo
+      },
+      {
+        heading: 'Client 2',
+        subheading: 'Lorem ipsum dolor sit amet, consectetur.',
+        panelHeading: 'Client 2',
+        panelSubheading: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, laboriosam?',
+        imageURL: 'img/logo2.png',
+        panelInfo
+      },
+      ...
+    ];
+  }
+});
+```
+ 
  
 ## Styles
 
