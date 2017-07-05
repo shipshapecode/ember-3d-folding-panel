@@ -4,14 +4,18 @@
 @import './ember-3d-folding-panel/functions';
 
 // Grab variables from sass map
+$accent-color: _e3dfp('accent-color');
 $color-1: _e3dfp('color-1');
 $color-2: _e3dfp('color-2');
 $color-3: _e3dfp('color-3');
 $color-4: _e3dfp('color-4');
 $color-6: _e3dfp('color-6');
+$dark-color: _e3dfp('dark-color');
 $itemSquareColors: $color-1 $color-2 $color-3 $color-4;
 $fold-animation: _e3dfp('fold-animation');
+$fold-color: _e3dfp('fold-color');
 $fold-content-animation: _e3dfp('fold-content-animation');
+$light-color: _e3dfp('light-color');
 $overlay-color: _e3dfp('overlay-color');
 
 /* --------------------------------
@@ -23,7 +27,7 @@ Primary style
 }
 
 a {
-  color: $color-2;
+  color: $accent-color;
   text-decoration: none;
 }
 
@@ -66,13 +70,13 @@ Main content
   transition: transform $fold-animation $fold-content-animation;
 
   a {
-    color: $color-6;
+    color: $light-color;
 
     &.dark-text {
-      color: $color-1;
+      color: $dark-color;
 
       b {
-        border-color: $color-1;
+        border-color: $dark-color;
       }
     }
   }
@@ -85,7 +89,7 @@ Main content
   }
 
   b {
-    border: 1px solid $color-6;
+    border: 1px solid $light-color;
   }
 
   &.is-huge {
@@ -117,7 +121,7 @@ folding panel
     &::after {
       transform-origin: right center;
       transform: translateX(-100%) rotateY(-90deg);
-      background-color: darken($color-3, 10%);
+      background-color: darken($fold-color, 10%);
     }
   }
 
@@ -126,14 +130,14 @@ folding panel
     display: none;
 
     &::after {
-      background-color: lighten($color-3, 12%);
+      background-color: lighten($fold-color, 12%);
     }
   }
 
   .close-button {
     &::after,
     &::before {
-      background-color: $color-2;
+      background-color: $accent-color;
     }
   }
 
@@ -148,7 +152,7 @@ folding panel
     }
 
     .fold-right::after {
-      background-color: lighten($color-3, 12%);
+      background-color: lighten($fold-color, 12%);
     }
 
     .close-button {
@@ -166,7 +170,7 @@ folding panel
   }
 
   em {
-    color: lighten($color-1, 30%);
+    color: lighten($dark-color, 30%);
 
     transition: transform $fold-content-animation/2 $fold-content-animation/4, opacity $fold-content-animation/2 $fold-content-animation/4;
   }
