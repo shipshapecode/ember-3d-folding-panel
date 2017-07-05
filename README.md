@@ -65,13 +65,17 @@ Ember-3d-folding-panel uses Sass for styles. The default styles for the panels a
 // This is the default map, not what you should use. 
 // i.e. you want to define $ember-3d-folding-panel, not $ember-3d-folding-panel-defaults
 $ember-3d-folding-panel-defaults: (
+  'accent-color': #544173, // Mulled Wine
   'color-1': #363558, // Martinique
   'color-2': #544173, // Mulled Wine
   'color-3': #dadcdc, // Iron
   'color-4': #65d29b, // Emerald
   'color-6': #ffffff, // White
+  'dark-color': #363558, // Martinique
   'fold-animation': .5s,
+  'fold-color': #dadcdc,
   'fold-content-animation': .2s*(3+1)/2, // replace 3 with number of elements that you want to animate
+  'light-color': #ffffff, // White
   'overlay-color': #1c1726, // Bastille
 );
 ```
