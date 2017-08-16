@@ -65,6 +65,7 @@
     "eslint-plugin-ember": "^4.3.0",
     "eslint-plugin-ember-suave": "^1.0.0",
     "loader.js": "^4.2.3",
+    "stylelint": "^8.0.0",
     "stylelint-config-ship-shape": "^0.0.4"
   },
   "engines": {
