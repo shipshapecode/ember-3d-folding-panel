@@ -22,12 +22,16 @@ export default Component.extend(LayoutClasses, {
     let scrollTop = null;
 
     if (get(this, 'layoutService.isAtLeastTablet')) {
+      const w = window;
+      const d = document;
+      const windowHeight = w.innerHeight || d.documentElement.clientHeight || document.body.clientHeight;
+
       /* if content is visible above the .gallery - scroll before opening the folding panel */
       if (galleryOffsetTop > getScrollTop()) {
         scrollTop = galleryOffsetTop;
-      } else if (galleryOffsetTop + getComputedStyle(gallery).height < getScrollTop() + getComputedStyle(window).height) {
+      } else if (galleryOffsetTop + getComputedStyle(gallery).height < getScrollTop() + windowHeight) {
         /* if content is visible below the .gallery - scroll before opening the folding panel */
-        scrollTop = galleryOffsetTop + getComputedStyle(gallery).height - getComputedStyle(window).height;
+        scrollTop = galleryOffsetTop + getComputedStyle(gallery).height - windowHeight;
       }
     }
     if (scrollTop) {
