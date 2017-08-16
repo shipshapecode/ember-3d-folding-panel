@@ -1,4 +1,5 @@
 import { moduleForComponent, test } from 'ember-qunit';
+import { find } from 'ember-native-dom-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('item-square', 'Integration | Component | item square', {
@@ -13,8 +14,8 @@ test('item renders correctly', function(assert) {
 
   this.render(hbs`{{item-square item=item}}`);
 
-  assert.equal(this.$('h2').text().trim(), 'Heading Test');
-  assert.equal(this.$('p').text().trim(), 'Subheading Test');
+  assert.equal(find('h2').textContent.trim(), 'Heading Test');
+  assert.equal(find('p').textContent.trim(), 'Subheading Test');
 
   // Template block usage:
   this.render(hbs`
@@ -23,7 +24,7 @@ test('item renders correctly', function(assert) {
     {{/item-square}}
   `);
 
-  const text = String(this.$().text().trim());
+  const text = String(find('.item-square').textContent.trim());
   assert.ok(text.startsWith('template block text'));
   assert.ok(text.includes('Heading Test'));
   assert.ok(text.includes('Subheading Test'));

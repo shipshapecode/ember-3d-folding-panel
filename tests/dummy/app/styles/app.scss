@@ -2,22 +2,22 @@
 @import './fonts';
 
 html {
-	font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-	font: {
-		size: 1.6rem;
-		family: $f-primary; // variables inside partials > _variables.scss
-	}
-	color: $color-1;
-	background-color: $overlay-color;
+  background-color: $overlay-color;
+  color: $color-1;
+  font: {
+    family: $f-primary; // variables inside partials > _variables.scss
+    size: 1.6rem;
+  }
 }
 
 .client-image {
-	height: auto;
-	padding: 10px;
-	width: 100px;
+  height: auto;
+  padding: 10px;
+  width: 100px;
 }
 
 /* --------------------------------
@@ -25,26 +25,26 @@ Header
 -------------------------------- */
 
 header {
-	height: 170px;
-	line-height: 170px;
-	text-align: center;
-	background: $color-6;
+  background: $color-6;
+  height: 170px;
+  line-height: 170px;
+  text-align: center;
 
-	h1 {
-		font-size: 2.2rem;
-		color: $color-1;
-	}
+  h1 {
+    color: $color-1;
+    font-size: 2.2rem;
+  }
 
-	@media(min-width: 992px) {
-		height: 200px;
-		line-height: 200px;
+  @media (min-width: 992px) {
+    height: 200px;
+    line-height: 200px;
 
-		h1 {
-			font-size: 3rem;
-		}
-	}
+    h1 {
+      font-size: 3rem;
+    }
+  }
 }
 
 .pacifico {
-	font-family: $f-pacifico;
+  font-family: $f-pacifico;
 }

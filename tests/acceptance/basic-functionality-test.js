@@ -1,3 +1,4 @@
+import { click, find, findAll, visit } from 'ember-native-dom-helpers';
 import Ember from  'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
@@ -5,46 +6,48 @@ const { run } = Ember;
 
 moduleForAcceptance('Acceptance | basic functionality');
 
-test('Clicking opens/closes the panel', function(assert) {
-  visit('/');
+test('Clicking opens/closes the panel', async function(assert) {
+  assert.expect(4);
+
+  const done = assert.async();
+
+  await visit('/');
 
   // Open the panel
-  click('.item-square:first');
+  await click(findAll('.item-square')[0]);
 
-  andThen(function() {
-    run.later(function() {
-      assert.equal(find('.fold-content h2').text().trim(), 'Client 1', 'Heading is correct');
-      assert.equal(find('.fold-content p').text().trim().substring(0, 20), 'Lorem ipsum dolor si', 'Subheading is correct');
-      assert.ok(find('.main-container').hasClass('fold-is-open'), 'main-container has fold-is-open class');
+  run.later(async function() {
+    assert.equal(find('.fold-content h2').textContent.trim(), 'Client 1', 'Heading is correct');
+    assert.equal(find('.fold-content p').textContent.trim().substring(0, 20), 'Lorem ipsum dolor si', 'Subheading is correct');
+    assert.ok(find('.main-container').classList.contains('fold-is-open'), 'main-container has fold-is-open class');
 
-      // Close the panel
-      click('.gallery');
+    // Close the panel
+    await click('.gallery');
 
-      andThen(function() {
-        assert.ok(!find('.main-container').hasClass('fold-is-open'), 'main-container does not have fold-is-open class');
-      });
-    }, 200);
-  });
+    assert.ok(!find('.main-container').classList.contains('fold-is-open'), 'main-container does not have fold-is-open class');
+    done();
+  }, 200);
 });
 
-test('Close button closes the panel', function(assert) {
-  visit('/');
+test('Close button closes the panel', async function(assert) {
+  assert.expect(4);
+
+  const done = assert.async();
+
+  await visit('/');
 
   // Open the panel
-  click('.item-square:first');
+  await click(findAll('.item-square')[0]);
 
-  andThen(() => {
-    run.later(function() {
-      assert.equal(find('.fold-content h2').text().trim(), 'Client 1', 'Heading is correct');
-      assert.equal(find('.fold-content p').text().trim().substring(0, 20), 'Lorem ipsum dolor si', 'Subheading is correct');
-      assert.ok(find('.main-container').hasClass('fold-is-open'), 'main-container has fold-is-open class');
+  run.later(function() {
+    assert.equal(find('.fold-content h2').textContent.trim(), 'Client 1', 'Heading is correct');
+    assert.equal(find('.fold-content p').textContent.trim().substring(0, 20), 'Lorem ipsum dolor si', 'Subheading is correct');
+    assert.ok(find('.main-container').classList.contains('fold-is-open'), 'main-container has fold-is-open class');
 
-      // Close the panel
-      click('.close-button');
+    // Close the panel
+    click('.close-button');
 
-      andThen(function() {
-        assert.ok(!find('.main-container').hasClass('fold-is-open'), 'main-container does not have fold-is-open class');
-      });
-    }, 200);
-  });
+    assert.ok(!find('.main-container').classList.contains('fold-is-open'), 'main-container does not have fold-is-open class');
+    done();
+  }, 200);
 });

@@ -1,7 +1,8 @@
-import $ from 'jquery';
-import run from 'ember-runloop';
-import Service from 'ember-service';
-import service from 'ember-service/inject';
+import { get, set } from '@ember/object';
+import Service from '@ember/service';
+import { oneTimeTransitionEvent } from '../utils';
+import { run } from '@ember/runloop';
+import { inject as service } from '@ember/service';
 
 export default Service.extend({
   layoutService: service('device/layout'),
@@ -9,26 +10,26 @@ export default Service.extend({
   toggleContent(bool) {
     if (bool) {
       // TODO set the content for the page before showing it
-      $('body').addClass('overflow-hidden');
+      document.body.classList.add('overflow-hidden');
       run.join(() => {
-        this.set('foldIsOpen', true);
+        set(this, 'foldIsOpen', true);
       });
     } else {
       /* close the folding panel */
       run.join(() => {
-        this.set('foldIsOpen', false);
+        set(this, 'foldIsOpen', false);
       });
 
       // if on mobile, immediately remove the .overflow-hidden
-      if (this.get('layoutService.isMobile')) {
-        $('body').removeClass('overflow-hidden');
+      if (get(this, 'layoutService.isMobile')) {
+        document.body.classList.remove('overflow-hidden');
       } else {
         // if not mobile, wait for the end of the animation
-        $('.item-square').eq(0).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',
-          () => {
-            $('body').removeClass('overflow-hidden');
-            $('.item-square').eq(0).off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend');
-          });
+        const [itemSquare] = document.querySelectorAll('.item-square');
+
+        oneTimeTransitionEvent(itemSquare, () => {
+          document.body.classList.remove('overflow-hidden');
+        });
       }
     }
   }

@@ -1,6 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
+import { find } from 'ember-native-dom-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import Service from 'ember-service';
+import Service from '@ember/service';
 
 const panelStub = Service.extend({
   foldIsOpen: true,
@@ -27,7 +28,7 @@ test('folding-panel renders selected info', function(assert) {
 
   this.render(hbs`{{folding-panel}}`);
 
-  assert.equal(this.$('.fold-content h2').text().trim(), 'Panel Heading');
-  assert.equal(this.$('.fold-content em').text().trim(), 'Panel Subheading');
-  assert.ok(this.$('.fold-content').text().trim().endsWith('<p>Foo</p>'));
+  assert.equal(find('.fold-content h2').textContent.trim(), 'Panel Heading');
+  assert.equal(find('.fold-content em').textContent.trim(), 'Panel Subheading');
+  assert.ok(find('.fold-content').textContent.trim().endsWith('<p>Foo</p>'));
 });

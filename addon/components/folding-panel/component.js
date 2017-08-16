@@ -1,6 +1,6 @@
-import { alias } from 'ember-computed';
-import Component from 'ember-component';
-import service from 'ember-service/inject';
+import { alias } from '@ember/object/computed';
+import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 import layout from './template';
 import LayoutClasses from '../../mixins/layout-classes';
 

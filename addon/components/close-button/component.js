@@ -1,11 +1,12 @@
-import Component from 'ember-component';
-import service from 'ember-service/inject';
+import Component from '@ember/component';
+import { get } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
   panel: service(),
   tagName: 'a',
   classNames: ['close-button'],
   click() {
-    this.get('panel').toggleContent(false);
+    get(this, 'panel').toggleContent(false);
   }
 });
