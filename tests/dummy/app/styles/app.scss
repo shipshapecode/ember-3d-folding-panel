@@ -7,7 +7,7 @@ html {
 
 body {
   background-color: $overlay-color;
-  color: $color-1;
+  color: #363558;
   font: {
     family: $f-primary; // variables inside partials > _variables.scss
     size: 1.6rem;
@@ -31,7 +31,7 @@ header {
   text-align: center;
 
   h1 {
-    color: $color-1;
+    color: #363558;
     font-size: 2.2rem;
   }
 
