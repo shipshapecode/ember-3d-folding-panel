@@ -5,13 +5,9 @@
 
 // Grab variables from sass map
 $accent-color: _e3dfp('accent-color');
-$color-1: _e3dfp('color-1');
-$color-2: _e3dfp('color-2');
-$color-3: _e3dfp('color-3');
-$color-4: _e3dfp('color-4');
 $color-6: _e3dfp('color-6');
 $dark-color: _e3dfp('dark-color');
-$itemSquareColors: $color-1 $color-2 $color-3 $color-4;
+$itemSquareColors: _e3dfp('itemSquareColors');;
 $fold-animation: _e3dfp('fold-animation');
 $fold-color: _e3dfp('fold-color');
 $fold-content-animation: _e3dfp('fold-content-animation');
