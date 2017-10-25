@@ -50,7 +50,7 @@
     "ember-cli-qunit": "^4.1.0-beta.2",
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-stylelint": "^0.15.0",
+    "ember-cli-stylelint": "^1.0.0",
     "ember-cli-uglify": "^2.0.0",
     "ember-debonair": "^0.4.4",
     "ember-disable-prototype-extensions": "^1.1.2",
