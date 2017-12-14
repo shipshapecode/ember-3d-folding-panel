@@ -25,9 +25,9 @@ export default Service.extend({
         document.body.classList.remove('overflow-hidden');
       } else {
         // if not mobile, wait for the end of the animation
-        const [itemSquare] = document.querySelectorAll('.item-square');
+        const openFoldingPanel = document.querySelector('.is-open');
 
-        oneTimeTransitionEvent(itemSquare, () => {
+        oneTimeTransitionEvent(openFoldingPanel, () => {
           document.body.classList.remove('overflow-hidden');
         });
       }
