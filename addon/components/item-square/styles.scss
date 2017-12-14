@@ -14,9 +14,12 @@
   backface-visibility: hidden;
 
   a {
-    cursor: pointer;
     overflow: hidden;
     @include font-smoothing;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 
   b {
@@ -65,9 +68,10 @@
     transition: opacity 0.3s 0s, transform 0.3s 0s;
   }
 
-  & a:hover {
-
-    h2, p, .extra-content * {
+  &:hover {
+    h2,
+    p,
+    .extra-content * {
       transform: translateY(0);
       transition: transform 0.3s 0s;
     }
