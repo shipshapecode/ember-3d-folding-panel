@@ -1,0 +1,221 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, main {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* --------------------------------
+Primary style
+-------------------------------- */
+*, *::after, *::before {
+  box-sizing: border-box; }
+
+a {
+  color: #544173;
+  text-decoration: none; }
+
+/* --------------------------------
+Patterns - reusable parts of our design
+-------------------------------- */
+.overflow-hidden {
+  overflow: hidden; }
+
+/* --------------------------------
+Main content
+-------------------------------- */
+.main-container > * {
+  transition: transform 0.5s 0.4s; }
+
+.main-container.fold-is-open > * {
+  /* on mobile - translate .main-container content to the right when the .folding-panel is open */
+  transform: translateX(100%);
+  transition: transform 0.5s 0s; }
+
+.gallery::before {
+  background-color: rgba(28, 23, 38, 0.6);
+  transition: opacity 0.5s 0.4s, visibility 0s 0.9s; }
+
+.fold-is-open .gallery::before {
+  transition: opacity 0.5s 0s, visibility 0s 0s; }
+
+.item-square {
+  transition: transform 0.5s 0.4s; }
+  .item-square a {
+    color: #ffffff; }
+    .item-square a.dark-text {
+      color: #363558; }
+      .item-square a.dark-text b {
+        border-color: #363558; }
+  .item-square:nth-of-type(1) {
+    background-color: #363558; }
+  .item-square:nth-of-type(2) {
+    background-color: #544173; }
+  .item-square:nth-of-type(3) {
+    background-color: #dadcdc; }
+  .item-square:nth-of-type(4) {
+    background-color: #65d29b; }
+  .item-square b {
+    border: 1px solid #ffffff; }
+  .item-square.is-huge {
+    transition: transform 0.5s 0.4s; }
+    .fold-is-open .item-square.is-huge {
+      transition: transform 0.5s 0s; }
+
+/* --------------------------------
+folding panel
+-------------------------------- */
+.folding-panel {
+  transition: visibility 0s 0.9s; }
+  .folding-panel .fold-left::after,
+  .folding-panel .fold-right::after {
+    transition: transform 0.5s 0.4s, background-color 0.5s 0.4s; }
+  .folding-panel .fold-right {
+    perspective-origin: 0% 50%; }
+    .folding-panel .fold-right::after {
+      transform-origin: right center;
+      transform: translateX(-100%) rotateY(-90deg);
+      background-color: #c0c3c3; }
+  .folding-panel .fold-left {
+    /* on mobile only the right fold side is visible */
+    display: none; }
+    .folding-panel .fold-left::after {
+      background-color: #f9fafa; }
+  .folding-panel .close-button::after, .folding-panel .close-button::before {
+    background-color: #544173; }
+  .folding-panel.is-open {
+    visibility: visible;
+    transition: visibility 0s 0s; }
+    .folding-panel.is-open .fold-right::after,
+    .folding-panel.is-open .fold-left::after {
+      transform: translateX(0);
+      transition: transform 0.5s 0s, background-color 0.5s 0s; }
+    .folding-panel.is-open .fold-right::after {
+      background-color: #f9fafa; }
+    .folding-panel.is-open .close-button {
+      opacity: 1;
+      transition: opacity 0.2s 0.5s; }
+
+.fold-content {
+  transition: visibility 0s 0.4s; }
+  .fold-content h2 {
+    transition: transform 0.2s 0.2s, opacity 0.2s 0.2s; }
+  .fold-content em {
+    color: #7a78ae;
+    transition: transform 0.2s 0.1s, opacity 0.2s 0.1s; }
+  .fold-content p {
+    transition: transform 0.2s 0s, opacity 0.2s 0s; }
+  .is-open .fold-content {
+    transition: visibility 0s 0.5s; }
+    .is-open .fold-content h2 {
+      transition: transform 0.2s 0.5s, opacity 0.2s 0.5s; }
+    .is-open .fold-content em {
+      transition: transform 0.2s 0.6s, opacity 0.2s 0.6s; }
+    .is-open .fold-content p {
+      transition: transform 0.2s 0.7s, opacity 0.2s 0.7s; }
+
+@font-face {
+  font-family: 'Pier Sans';
+  font-style: italic;
+  font-weight: bold;
+  src: url("../../fonts/PierSans-BoldItalic.eot");
+  src: url("../../fonts/PierSans-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../../fonts/PierSans-BoldItalic.woff") format("woff"), url("../../fonts/PierSans-BoldItalic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Pier Sans';
+  font-style: italic;
+  font-weight: normal;
+  src: url("../../fonts/PierSans-Italic.eot");
+  src: url("../../fonts/PierSans-Italic.eot?#iefix") format("embedded-opentype"), url("../../fonts/PierSans-Italic.woff") format("woff"), url("../../fonts/PierSans-Italic.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Pier Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../fonts/PierSans.eot");
+  src: url("../../fonts/PierSans.eot?#iefix") format("embedded-opentype"), url("../../fonts/PierSans.woff") format("woff"), url("../../fonts/PierSans.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Pier Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: url("../../fonts/PierSans-Bold.eot");
+  src: url("../../fonts/PierSans-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/PierSans-Bold.woff") format("woff"), url("../../fonts/PierSans-Bold.ttf") format("truetype"); }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  background-color: #1c1726;
+  color: #363558;
+  font-family: "Pier Sans", sans-serif;
+  font-size: 1.6rem; }
+
+.client-image {
+  height: auto;
+  padding: 10px;
+  width: 100px; }
+
+/* --------------------------------
+Header
+-------------------------------- */
+header {
+  background: #ffffff;
+  height: 170px;
+  line-height: 170px;
+  text-align: center; }
+  header h1 {
+    color: #363558;
+    font-size: 2.2rem; }
+  @media (min-width: 992px) {
+    header {
+      height: 200px;
+      line-height: 200px; }
+      header h1 {
+        font-size: 3rem; } }
+
+.pacifico {
+  font-family: "Pacifico"; }
+
+/*# sourceMappingURL=dummy.css.map */
