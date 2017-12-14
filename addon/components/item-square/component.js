@@ -35,7 +35,7 @@ export default Component.extend(LayoutClasses, {
       }
     }
     if (scrollTop) {
-      scrollTo(document.body, scrollTop, 100, () => {
+      scrollTo(document.documentElement, scrollTop, 100, () => {
         get(this, 'panel').toggleContent(true);
       });
     } else {
