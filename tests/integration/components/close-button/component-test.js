@@ -1,12 +1,14 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('close-button', 'Integration | Component | close button', {
-  integration: true
-});
+module('Integration | Component | close button', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  assert.expect(0);
+  test('it renders', async function(assert) {
+    assert.expect(0);
 
-  this.render(hbs`{{close-button}}`);
+    await render(hbs`{{close-button}}`);
+  });
 });

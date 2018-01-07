@@ -1,5 +1,6 @@
-import Ember from 'ember';
-const { Route, String: { htmlSafe } } = Ember;
+import Route from '@ember/routing/route';
+import { htmlSafe } from '@ember/string';
+
 const panelInfo = htmlSafe(`<p>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus tempora nostrum
   aut quam praesentium veritatis nisi, odio eius, voluptatibus, iure neque commodi

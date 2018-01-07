@@ -1,11 +1,12 @@
-import { moduleFor, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('service:panel', 'Unit | Service | panel', {
-  needs: ['service:device/layout']
-});
+module('Unit | Service | panel', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  const service = this.subject();
-  assert.ok(service);
+  // Replace this with your real tests.
+  test('it exists', function(assert) {
+    const service = this.owner.lookup('service:panel');
+    assert.ok(service);
+  });
 });

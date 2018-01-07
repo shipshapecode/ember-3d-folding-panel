@@ -1,4 +1,7 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+/* eslint-disable ember/avoid-leaking-state-in-ember-objects */
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import { find } from 'ember-native-dom-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import Service from '@ember/service';
@@ -15,20 +18,20 @@ const panelStub = Service.extend({
   }
 });
 
-moduleForComponent('folding-panel', 'Integration | Component | folding panel', {
-  integration: true,
+module('Integration | Component | folding panel', function(hooks) {
+  setupRenderingTest(hooks);
 
-  beforeEach() {
-    this.register('service:panel', panelStub);
-    this.inject.service('panel', { as: 'panel' });
-  }
-});
+  hooks.beforeEach(function() {
+    this.owner.register('service:panel', panelStub);
+    this.panel = this.owner.lookup('service:panel');
+  });
 
-test('folding-panel renders selected info', function(assert) {
+  test('folding-panel renders selected info', async function(assert) {
 
-  this.render(hbs`{{folding-panel}}`);
+    await render(hbs`{{folding-panel}}`);
 
-  assert.equal(find('.fold-content h2').textContent.trim(), 'Panel Heading');
-  assert.equal(find('.fold-content em').textContent.trim(), 'Panel Subheading');
-  assert.ok(find('.fold-content').textContent.trim().endsWith('<p>Foo</p>'));
+    assert.equal(find('.fold-content h2').textContent.trim(), 'Panel Heading');
+    assert.equal(find('.fold-content em').textContent.trim(), 'Panel Subheading');
+    assert.ok(find('.fold-content').textContent.trim().endsWith('<p>Foo</p>'));
+  });
 });

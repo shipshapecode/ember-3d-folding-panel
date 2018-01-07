@@ -1,12 +1,14 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ember-3d-folding-panel', 'Integration | Component | ember 3d folding panel', {
-  integration: true
-});
+module('Integration | Component | ember 3d folding panel', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  assert.expect(0);
+  test('it renders', async function(assert) {
+    assert.expect(0);
 
-  this.render(hbs`{{ember-3d-folding-panel}}`);
+    await render(hbs`{{ember-3d-folding-panel}}`);
+  });
 });
