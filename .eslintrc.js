@@ -24,6 +24,7 @@ module.exports = {
         'testem.js',
         'ember-cli-build.js',
         'config/**/*.js',
+        'fastboot-tests/**.js',
         'tests/dummy/config/**/*.js'
       ],
       excludedFiles: [
@@ -41,7 +42,7 @@ module.exports = {
       },
       plugins: ['node'],
       rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
-        // add your custom rules and overrides for node files here
+        'node/no-unpublished-require': 'off'
       })
     }
   ]

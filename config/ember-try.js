@@ -6,7 +6,7 @@ module.exports = function() {
   return Promise.all([
     getChannelURL('release'),
     getChannelURL('beta'),
-    getChannelURL('canary'),
+    getChannelURL('canary')
   ]).then((urls) => {
     return {
       useYarn: true,
@@ -63,6 +63,13 @@ module.exports = function() {
           name: 'ember-default',
           npm: {
             devDependencies: {}
+          }
+        },
+        {
+          name: 'fastboot-addon-tests',
+          command: 'ember fastboot:test',
+          bower: {
+            dependencies: {}
           }
         }
       ]

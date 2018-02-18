@@ -8,14 +8,17 @@ import { inject as service } from '@ember/service';
 export default Component.extend(LayoutClasses, {
   layoutService: service('device/layout'),
   panel: service(),
+
   layout,
   tagName: 'centered',
   classNames: ['item-square', 'col-xs-12', 'col-lg-6'],
+
   click(event) {
     event.preventDefault();
     set(this, 'panel.selected', get(this, 'item'));
     this.openItemInfo();
   },
+
   openItemInfo() {
     const [gallery] = document.querySelectorAll('.gallery');
     const galleryOffsetTop = gallery.getBoundingClientRect().top + document.body.scrollTop;
