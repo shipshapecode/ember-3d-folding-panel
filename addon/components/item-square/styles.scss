@@ -6,16 +6,17 @@
 }
 
 & {
+  backface-visibility: hidden;
   height: 300px;
   text-align: center;
 
   /* Force Hardware Acceleration */
   transform: translateZ(0);
-  backface-visibility: hidden;
 
   a {
-    overflow: hidden;
     @include font-smoothing;
+
+    overflow: hidden;
   }
 
   &:hover {
@@ -23,15 +24,16 @@
   }
 
   b {
+    border-radius: 50em;
     display: inline-block;
     font: {
       size: 1.2rem;
       weight: bold;
     }
-    text-transform: uppercase;
+
     letter-spacing: 1px;
-    padding: 1.3em 1.3em 1em 1.3em;
-    border-radius: 50em;
+    padding: 1.3em 1.3em 1em;
+    text-transform: uppercase;
   }
 
   h2 {
@@ -39,8 +41,8 @@
   }
 
   p {
-    line-height: 1.2;
     font-size: 1.4rem;
+    line-height: 1.2;
     opacity: 0.6;
     padding: 1em 0;
   }
@@ -57,7 +59,9 @@
     font-size: 1.6rem;
   }
 
-  h2, p, .extra-content * {
+  h2,
+  p,
+  .extra-content * {
     transform: translateY(30px);
     transition: transform 0.3s 0.1s;
   }

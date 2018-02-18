@@ -1,13 +1,11 @@
 &.is-desktop {
-
   &.fold-is-open > * {
     transform: translateX(600px);
   }
 }
 
 &.is-huge {
-
-  &::before {
+  &:before {
     /* never visible - this is used in jQuery to check the current MQ */
     content: 'desktop';
   }
@@ -17,35 +15,37 @@
     transform: translateX(0);
   }
 }
+
 // .main-container
 & {
   overflow-x: hidden;
 
-  &::before {
+  &:before {
     /* never visible - this is used in jQuery to check the current MQ */
-    display: none;
     content: 'mobile';
+    display: none;
   }
 
   .gallery {
     width: 100%;
 
-    &::before {
+    &:before {
       /* this is the dark layer covering the .gallery when the .folding-panel is open */
-      display: block;
       content: '';
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: 0;
+      display: block;
       height: 100%;
-      width: 100%;
+      left: 0;
       opacity: 0;
+      position: absolute;
+      top: 0;
       visibility: hidden;
+      width: 100%;
+      z-index: 1;
     }
   }
-  &.fold-is-open .gallery::before {
-    visibility: visible;
+
+  &.fold-is-open .gallery:before {
     opacity: 1;
+    visibility: visible;
   }
 }
