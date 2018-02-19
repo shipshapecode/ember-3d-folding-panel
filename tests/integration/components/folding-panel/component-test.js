@@ -1,8 +1,7 @@
 import { module, test } from 'qunit';
 /* eslint-disable ember/avoid-leaking-state-in-ember-objects */
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
-import { find } from 'ember-native-dom-helpers';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import Service from '@ember/service';
 
