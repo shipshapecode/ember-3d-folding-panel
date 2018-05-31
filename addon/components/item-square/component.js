@@ -20,23 +20,23 @@ export default Component.extend(LayoutClasses, {
   },
 
   openItemInfo() {
-    const [gallery] = document.querySelectorAll('.gallery');
-    const galleryOffsetTop = gallery.getBoundingClientRect().top + document.body.scrollTop;
+    const gallery = document.querySelector('.gallery');
+    const galleryOffsetTop = gallery.getBoundingClientRect().top + getScrollTop();
     let scrollTop = null;
 
     if (get(this, 'layoutService.isAtLeastTablet')) {
-      const w = window;
-      const d = document;
-      const windowHeight = w.innerHeight || d.documentElement.clientHeight || document.body.clientHeight;
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+      const galleryHeight = parseInt(getComputedStyle(gallery).height, 10);
 
       /* if content is visible above the .gallery - scroll before opening the folding panel */
       if (galleryOffsetTop > getScrollTop()) {
         scrollTop = galleryOffsetTop;
-      } else if (galleryOffsetTop + getComputedStyle(gallery).height < getScrollTop() + windowHeight) {
+      } else if (galleryOffsetTop + galleryHeight < getScrollTop() + windowHeight) {
         /* if content is visible below the .gallery - scroll before opening the folding panel */
-        scrollTop = galleryOffsetTop + getComputedStyle(gallery).height - windowHeight;
+        scrollTop = galleryOffsetTop + galleryHeight - windowHeight;
       }
     }
+
     if (scrollTop) {
       scrollTo(document.documentElement, scrollTop, 100, () => {
         get(this, 'panel').toggleContent(true);
