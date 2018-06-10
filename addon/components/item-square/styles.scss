@@ -26,10 +26,8 @@
   b {
     border-radius: 50em;
     display: inline-block;
-    font: {
-      size: 1.2rem;
-      weight: bold;
-    }
+    font-size: 0.75rem;
+    font-weight: bold;
 
     letter-spacing: 1px;
     padding: 1.3em 1.3em 1em;
@@ -37,12 +35,12 @@
   }
 
   h2 {
-    font-size: 2.2rem;
+    font-size: 1.4rem;
   }
 
   p {
-    font-size: 1.4rem;
-    line-height: 1.2;
+    font-size: 0.9rem;
+    line-height: 1;
     opacity: 0.6;
     padding: 1em 0;
   }
@@ -52,11 +50,11 @@
   height: 520px;
 
   h2 {
-    font-size: 3rem;
+    font-size: 1.9rem;
   }
 
   p {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 
   h2,
