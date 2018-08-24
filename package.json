@@ -29,11 +29,11 @@
     "@html-next/flexi-config": "^2.1.1",
     "@html-next/flexi-default-styles": "^2.1.1",
     "@html-next/flexi-dsl": "^2.1.0",
-    "@html-next/flexi-layouts": "^2.2.1",
+    "@html-next/flexi-layouts": "^2.2.2",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-sass": "^7.0.0",
-    "ember-component-css": "^0.6.3",
+    "ember-component-css": "^0.6.4",
     "flexi": "^2.1.0"
   },
   "devDependencies": {

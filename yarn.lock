@@ -42,9 +42,9 @@
     ember-cli-preprocess-registry "^3.0.0"
     rsvp "^4.8.0"
 
-"@html-next/flexi-layouts@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-layouts/-/flexi-layouts-2.2.1.tgz#4cadc8cd1f84e839c0d16cb647a1e92734050307"
+"@html-next/flexi-layouts@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-layouts/-/flexi-layouts-2.2.2.tgz#750da44b5b36aefbabbd735bb2cec23cb91beddd"
   dependencies:
     "@html-next/flexi-config" "2.1.1"
     broccoli-funnel "^2.0.1"
@@ -55,6 +55,7 @@
     ember-cli-babel "^6.6.0"
     ember-cli-htmlbars "^2.0.1"
     ember-cli-preprocess-registry "^3.0.0"
+    ember-copy "^1.0.0"
     ember-window-mock "^0.4.0"
     rsvp "^4.0.0"
 
@@ -3124,9 +3125,9 @@ ember-cli@~3.3.0:
     watch-detector "^0.1.0"
     yam "^0.0.24"
 
-ember-component-css@^0.6.3:
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/ember-component-css/-/ember-component-css-0.6.3.tgz#7e6bc5c02875ceac87250cdf43eaa1872da7a7b4"
+ember-component-css@^0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/ember-component-css/-/ember-component-css-0.6.4.tgz#147ad1cf586ed5d2e5707d5406676273eea5897a"
   dependencies:
     broccoli-concat "^3.2.2"
     broccoli-funnel "^2.0.1"
@@ -3144,6 +3145,12 @@ ember-component-css@^0.6.3:
     postcss-selector-namespace "^1.5.0"
     rsvp "^4.8.1"
     walk-sync "^0.3.2"
+
+ember-copy@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ember-copy/-/ember-copy-1.0.0.tgz#426554ba6cf65920f31d24d0a3ca2cb1be16e4aa"
+  dependencies:
+    ember-cli-babel "^6.6.0"
 
 ember-debonair@^0.4.4:
   version "0.4.4"
