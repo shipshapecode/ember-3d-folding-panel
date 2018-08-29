@@ -9,7 +9,7 @@
 [![Ember Observer Score](http://emberobserver.com/badges/ember-3d-folding-panel.svg)](http://emberobserver.com/addons/ember-3d-folding-panel)
 [![Build Status](https://travis-ci.org/shipshapecode/ember-3d-folding-panel.svg?branch=master)](https://travis-ci.org/shipshapecode/ember-3d-folding-panel)
 [![Code Climate](https://codeclimate.com/github/shipshapecode/ember-3d-folding-panel/badges/gpa.svg)](https://codeclimate.com/github/shipshapecode/ember-3d-folding-panel)
-[![Test Coverage](https://codeclimate.com/github/shipshapecode/ember-3d-folding-panel/badges/coverage.svg)](https://codeclimate.com/github/shipshapecode/ember-3d-folding-panel/coverage)
+[![Test Coverage](https://codeclimate.com/github/shipshapecode/ember-3d-folding-panel/badges/coverage.svg)](https://codeclimate.com/github/shipshapecode/ember-3d-folding-panel/coverage) [![Greenkeeper badge](https://badges.greenkeeper.io/shipshapecode/ember-3d-folding-panel.svg)](https://greenkeeper.io/)
 
 Ember-3d-folding-panel is based on [3D Folding Panel](https://codyhouse.co/gem/3d-folding-panel/) by CodyHouse. It aims to make it easily configurable for use with your Ember apps.
 
