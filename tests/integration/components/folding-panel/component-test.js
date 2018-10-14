@@ -8,6 +8,7 @@ import Service from '@ember/service';
 const panelStub = Service.extend({
   foldIsOpen: true,
   selected: {
+    alt: 'Client 1',
     heading: 'Client 1',
     subheading: 'Lorem ipsum dolor sit amet, consectetur.',
     panelHeading: 'Panel Heading',

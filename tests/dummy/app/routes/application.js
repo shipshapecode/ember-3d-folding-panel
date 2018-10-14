@@ -32,6 +32,7 @@ export default Route.extend({
   model() {
     return [
       {
+        alt: 'Client 1',
         heading: 'Client 1',
         subheading: 'Lorem ipsum dolor sit amet, consectetur.',
         panelHeading: 'Client 1',
@@ -40,6 +41,7 @@ export default Route.extend({
         panelInfo
       },
       {
+        alt: 'Client 2',
         heading: 'Client 2',
         subheading: 'Lorem ipsum dolor sit amet, consectetur.',
         panelHeading: 'Client 2',
@@ -48,6 +50,7 @@ export default Route.extend({
         panelInfo
       },
       {
+        alt: 'Client 3',
         heading: 'Client 3',
         subheading: 'Lorem ipsum dolor sit amet, consectetur.',
         panelHeading: 'Client 3',
@@ -56,6 +59,7 @@ export default Route.extend({
         panelInfo
       },
       {
+        alt: 'Client 4',
         heading: 'Client 4',
         subheading: 'Lorem ipsum dolor sit amet, consectetur.',
         panelHeading: 'Client 4',
