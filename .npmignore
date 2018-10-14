@@ -17,6 +17,7 @@
 /bower.json
 /config/ember-try.js
 /ember-cli-build.js
+/fastboot-tests/
 /testem.js
 /tests/
 /yarn.lock
