@@ -1,4 +1,5 @@
-# Ember-3d-folding-panel
+ember-3d-folding-panel
+==============================================================================
 
 <a href="https://shipshape.io/"><img src="http://i.imgur.com/KVqNjgO.png" width="100" height="100"/></a>
 
@@ -13,10 +14,19 @@
 
 Ember-3d-folding-panel is based on [3D Folding Panel](https://codyhouse.co/gem/3d-folding-panel/) by CodyHouse. It aims to make it easily configurable for use with your Ember apps.
 
-## Installation
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
+
+Installation
+------------------------------------------------------------------------------
 `ember install ember-3d-folding-panel`
 
-## Usage
+Usage
+------------------------------------------------------------------------------
 ```hbs
 {{folding-panel}}
 {{#ember-3d-folding-panel}}
@@ -99,4 +109,13 @@ $ember-3d-folding-panel: (
 @import 'ember-3d-folding-panel';
 ```
 
+Contributing
+------------------------------------------------------------------------------
 
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+
+License
+------------------------------------------------------------------------------
+
+This project is licensed under the [MIT License](LICENSE.md).
